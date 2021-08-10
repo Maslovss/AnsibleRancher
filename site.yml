@@ -1,0 +1,6 @@
+---
+- hosts: localtest
+  tasks:
+    - name: Run OpenLDAP
+      include_role:
+        name: run_openldap
