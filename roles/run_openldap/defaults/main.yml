@@ -1,10 +1,13 @@
 ---
 # defaults file for run_openldap
+# See all variables https://github.com/bitnami/bitnami-docker-openldap
 
 openldap_docker_image: "bitnami/openldap:2.4"
 openldap_container_name: "OpenLDAP-local"
 openldap_admin_username: "open_admin"
 openldap_admin_password: "secret"
+
+#Надо указать хотя бы одного пользователя, используется для тестирования поднялся ли сервер
 openldap_users_username: "user01,user02"
 openldap_users_password: "password1,password2"
 

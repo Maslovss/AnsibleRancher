@@ -1,18 +1,4 @@
 ---
-- name: Check if OpenLDAP container is running
-  docker_container_info:
-    name: "{{ openldap_container_name }}"
-  register: result
-
-- name: Does container exist?
-  debug:
-    msg: "The container {{ 'exists' if result.exists else 'does not exist' }}"
-
-- name: Print the status of the container
-  debug:
-    msg: "The container status is {{ result.container['State']['Status'] }}"
-  when: result.exists
-
 - name: Start OpenLDAP container
   docker_container:
     name: "{{ openldap_container_name }}"
@@ -28,4 +14,22 @@
       LDAP_PASSWORDS: "{{ openldap_users_password }}"
       LDAP_ROOT: "{{ openldap_root }}"
       LDAP_PORT_NUMBER: "{{ openldap_container_port }}"
-#  when: "{{ result.container['State']['Status'] }}" != "running"
+
+#We need command ldapsearch for testing
+# test ldapsearch -x -b "dc=example,dc=org" -H ldap://IP:1389
+- name: Install openldap-clients for testing
+  yum:
+    name: openldap-clients
+    state: latest
+
+- name: Test 1, making request with ldapsearch...
+  vars:
+    server_ip: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+  #TODO добавить кавычки: ldapsearch -x -b "{{ openldap_root }}" -H...........
+  shell: "ldapsearch -x -b {{ openldap_root }} -H ldap://{{ server_ip }}:{{ openldap_server_port }} |  egrep 'member.+{{ openldap_root }}'"
+  register: result_ldapsearch_request
+  failed_when: result_ldapsearch_request.stdout == ""
+
+- name: Test 1
+  debug:
+    msg: "Test passed"

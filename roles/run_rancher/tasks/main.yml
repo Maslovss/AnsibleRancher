@@ -1,2 +1,48 @@
 ---
 # tasks file for run_rancher
+---
+- name: Check if Rancher container is running
+  docker_container_info:
+    name: "{{ rancher_container_name }}"
+  register: result
+
+- name: Does container exist?
+  debug:
+    msg: "The container {{ 'exists' if result.exists else 'does not exist' }}"
+
+- name: Print the status of the container
+  debug:
+    msg: "The container status is {{ result.container['State']['Status'] }}"
+  when: result.exists
+
+- name: Start Rancher container
+  docker_container:
+    name: "{{ rancher_container_name }}"
+    image: "{{ rancher_docker_image }}"
+    state: started
+    recreate: yes
+    ports:
+      - "{{ openldap_server_port }}:{{ openldap_container_port }}"
+    env:
+      LDAP_ADMIN_USERNAME: "{{ openldap_admin_username }}"
+      LDAP_ADMIN_PASSWORD: "{{ openldap_admin_password }}"
+      LDAP_USERS: "{{ openldap_users_username }}"
+      LDAP_PASSWORDS: "{{ openldap_users_password }}"
+      LDAP_ROOT: "{{ openldap_root }}"
+      LDAP_PORT_NUMBER: "{{ openldap_container_port }}"
+#  when: "{{ result.container['State']['Status'] }}" != "running"
+
+#We need command ldapsearch for testing
+# test ldapsearch -x -b "dc=example,dc=org" -H ldap://IP:1389
+
+- name: Test hosts list
+  debug:
+    msg: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+
+- name: Install openldap-clients for testing
+  yum:
+    name: openldap-clients
+    state: latest
+#- name: Check docker version
+#  shell: "ldapsearch -x -b \"{{ openldap_root }} -H "
+#  register: result_docker_version

@@ -1,2 +1,3 @@
 ---
 # defaults file for run_rancher
+rancher_container_name: "rancher/rancher:v2.5-head"
