@@ -7,3 +7,9 @@ openldap_admin_username: "open_admin"
 openldap_admin_password: "secret"
 openldap_users_username: "user01,user02"
 openldap_users_password: "password1,password2"
+
+#Ports for NON TLS
+openldap_container_port: "1389"
+openldap_server_port: "1389"
+
+openldap_root: "dc=example,dc=org"

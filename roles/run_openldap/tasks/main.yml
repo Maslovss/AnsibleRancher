@@ -1,9 +1,4 @@
 ---
-#- name: Pull OpenLDAP docker image
-#  docker_image:
-#    name: "{{  openldap_docker_image }}"
-#    source: pull
-
 - name: Check if OpenLDAP container is running
   docker_container_info:
     name: "{{ openldap_container_name }}"
@@ -25,13 +20,12 @@
     state: started
     recreate: yes
     ports:
-      - "{{ openldap_server_tls_port }}:{{ openldap_image_port }}"
-      - "1636:1636"
+      - "{{ openldap_server_port }}:{{ openldap_container_port }}"
     env:
       LDAP_ADMIN_USERNAME: "{{ openldap_admin_username }}"
       LDAP_ADMIN_PASSWORD: "{{ openldap_admin_password }}"
       LDAP_USERS: "{{ openldap_users_username }}"
       LDAP_PASSWORDS: "{{ openldap_users_password }}"
-      LDAP_ROOT: "{{ openldap_image_port }}"
-      LDAP_PORT_NUMBER: "{{ openldap_root }}"
+      LDAP_ROOT: "{{ openldap_root }}"
+      LDAP_PORT_NUMBER: "{{ openldap_container_port }}"
 #  when: "{{ result.container['State']['Status'] }}" != "running"
