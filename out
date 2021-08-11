@@ -1,0 +1,1252 @@
+ansible-playbook 2.9.23
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/home/leon/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.6/site-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.6.8 (default, Mar 19 2021, 05:13:41) [GCC 8.4.1 20200928 (Red Hat 8.4.1-1)]
+Using /etc/ansible/ansible.cfg as config file
+host_list declined parsing /home/leon/ansible/lesson5/inventory.yml as it did not pass its verify_file() method
+script declined parsing /home/leon/ansible/lesson5/inventory.yml as it did not pass its verify_file() method
+Parsed /home/leon/ansible/lesson5/inventory.yml inventory source with yaml plugin
+Skipping callback 'actionable', as we already have a stdout callback.
+Skipping callback 'counter_enabled', as we already have a stdout callback.
+Skipping callback 'debug', as we already have a stdout callback.
+Skipping callback 'dense', as we already have a stdout callback.
+Skipping callback 'dense', as we already have a stdout callback.
+Skipping callback 'full_skip', as we already have a stdout callback.
+Skipping callback 'json', as we already have a stdout callback.
+Skipping callback 'minimal', as we already have a stdout callback.
+Skipping callback 'null', as we already have a stdout callback.
+Skipping callback 'oneline', as we already have a stdout callback.
+Skipping callback 'selective', as we already have a stdout callback.
+Skipping callback 'skippy', as we already have a stdout callback.
+Skipping callback 'stderr', as we already have a stdout callback.
+Skipping callback 'unixy', as we already have a stdout callback.
+Skipping callback 'yaml', as we already have a stdout callback.
+
+PLAYBOOK: site.yml **************************************************************************************************************************************************************************
+1 plays in site.yml
+
+PLAY [localtest] ****************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/site.yml:2
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'echo ~leon && sleep 0'"'"''
+<127.0.0.1> (0, b'/home/leon\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/leon/.ansible/tmp `"&& mkdir "` echo /home/leon/.ansible/tmp/ansible-tmp-1628711687.441701-240908-63009186516166 `" && echo ansible-tmp-1628711687.441701-240908-63009186516166="` echo /home/leon/.ansible/tmp/ansible-tmp-1628711687.441701-240908-63009186516166 `" ) && sleep 0'"'"''
+<127.0.0.1> (0, b'ansible-tmp-1628711687.441701-240908-63009186516166=/home/leon/.ansible/tmp/ansible-tmp-1628711687.441701-240908-63009186516166\n', b'')
+<localtest> Attempting python interpreter discovery
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'echo PLATFORM; uname; echo FOUND; command -v '"'"'"'"'"'"'"'"'/usr/bin/python'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python3.7'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python3.6'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python3.5'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python2.7'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python2.6'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'/usr/libexec/platform-python'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'/usr/bin/python3'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python'"'"'"'"'"'"'"'"'; echo ENDFOUND && sleep 0'"'"''
+<127.0.0.1> (0, b'PLATFORM\nLinux\nFOUND\n/usr/bin/python3.6\n/usr/libexec/platform-python\n/usr/bin/python3\nENDFOUND\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'/usr/bin/python3.6 && sleep 0'"'"''
+<127.0.0.1> (0, b'{"platform_dist_result": ["centos", "8.4.2105", ""], "osrelease_content": "NAME=\\"CentOS Linux\\"\\nVERSION=\\"8\\"\\nID=\\"centos\\"\\nID_LIKE=\\"rhel fedora\\"\\nVERSION_ID=\\"8\\"\\nPLATFORM_ID=\\"platform:el8\\"\\nPRETTY_NAME=\\"CentOS Linux 8\\"\\nANSI_COLOR=\\"0;31\\"\\nCPE_NAME=\\"cpe:/o:centos:centos:8\\"\\nHOME_URL=\\"https://centos.org/\\"\\nBUG_REPORT_URL=\\"https://bugs.centos.org/\\"\\nCENTOS_MANTISBT_PROJECT=\\"CentOS-8\\"\\nCENTOS_MANTISBT_PROJECT_VERSION=\\"8\\"\\n"}\n', b'')
+Using module file /usr/lib/python3.6/site-packages/ansible/modules/system/setup.py
+<127.0.0.1> PUT /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmpg61i5v9s TO /home/leon/.ansible/tmp/ansible-tmp-1628711687.441701-240908-63009186516166/AnsiballZ_setup.py
+<127.0.0.1> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 '[127.0.0.1]'
+<127.0.0.1> (0, b'sftp> put /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmpg61i5v9s /home/leon/.ansible/tmp/ansible-tmp-1628711687.441701-240908-63009186516166/AnsiballZ_setup.py\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'chmod u+x /home/leon/.ansible/tmp/ansible-tmp-1628711687.441701-240908-63009186516166/ /home/leon/.ansible/tmp/ansible-tmp-1628711687.441701-240908-63009186516166/AnsiballZ_setup.py && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 -tt 127.0.0.1 '/bin/sh -c '"'"'sudo -H -S -n  -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-kpuhzpnltdobyffdgkbmalzfpimfrmmt ; /usr/libexec/platform-python /home/leon/.ansible/tmp/ansible-tmp-1628711687.441701-240908-63009186516166/AnsiballZ_setup.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<127.0.0.1> (0, b'\r\n{"ansible_facts": {"ansible_virtualization_role": "guest", "ansible_virtualization_type": "VirtualPC", "ansible_iscsi_iqn": "", "ansible_hostnqn": "", "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABgQDDZUPTI9c8rXWZYobMinNUMrDyEn2ANFhObctVzrGfy511UsCHAE8t3rgBRbr4njsMY8JSwxGdFHbNCrS1cUk1RC3vQvYnPxEbRyFoDnNB+LzHT9VOiqt1a7syhBpJyHGwdGMDsCM9zzpWE+Vw+fLoJ6ZLDjy6IzaaZkKht7WUO209shv9IXjIn4DxKwHUaWegs3VOB3QyPsjZ2Rmym1Z8MjM2AvKo+RqXnvLQVrxrBMKZqar/q6mbLZ/eDxyDWLDccPDC/2ek4LJzjLhQOOp+QNUIO+vXVnXn8MT2cSwjRCMOfPG2ZoQtQVly76jWcrE6TvTZl8mRsW2dKpm0LQjG7TtYdU8lP7zwjP6tkZhULtXELcx2uJ1k49gCeol9vYIKpcUJHmxhRxuRj57LBsrtyjgj3ZrA/ms3fUfYaSmiuTqTpR8BHKKhGOtrcOsz7/SPIV+4FmrL3XR6ejpT3nuYK1a9cZpxqevd3fNdmhB2nyoDhYesXZORqHYyz0jDkgM=", "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHnWfGKWYB7ZQuNZtBgsP4Q7xnSLszqW7EM/Cx5hCBDBmQWINvm+68AVtf3N1sAeuOw6xaG9JgR7xeCJ/vfbT5c=", "ansible_ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIDmZz/xRL1AY6L0Vj4ruscesL5Ujgenmp67aZix7WLqH", "ansible_date_time": {"year": "2021", "month": "08", "weekday": "Wednesday", "weekday_number": "3", "weeknumber": "32", "day": "11", "hour": "22", "minute": "54", "second": "48", "epoch": "1628711688", "date": "2021-08-11", "time": "22:54:48", "iso8601_micro": "2021-08-11T19:54:48.493362Z", "iso8601": "2021-08-11T19:54:48Z", "iso8601_basic": "20210811T225448493362", "iso8601_basic_short": "20210811T225448", "tz": "EEST", "tz_offset": "+0300"}, "ansible_local": {}, "ansible_python": {"version": {"major": 3, "minor": 6, "micro": 8, "releaselevel": "final", "serial": 0}, "version_info": [3, 6, 8, "final", 0], "executable": "/usr/libexec/platform-python", "has_sslcontext": true, "type": "cpython"}, "ansible_distribution": "CentOS", "ansible_distribution_release": "NA", "ansible_distribution_version": "8.4", "ansible_distribution_major_version": "8", "ansible_distribution_file_path": "/etc/redhat-release", "ansible_distribution_file_variety": "RedHat", "ansible_distribution_file_parsed": true, "ansible_os_family": "RedHat", "ansible_user_id": "root", "ansible_user_uid": 0, "ansible_user_gid": 0, "ansible_user_gecos": "root", "ansible_user_dir": "/root", "ansible_user_shell": "/bin/bash", "ansible_real_user_id": 0, "ansible_effective_user_id": 0, "ansible_real_group_id": 0, "ansible_effective_group_id": 0, "ansible_system": "Linux", "ansible_kernel": "4.18.0-305.10.2.el8_4.x86_64", "ansible_kernel_version": "#1 SMP Tue Jul 20 17:25:16 UTC 2021", "ansible_machine": "x86_64", "ansible_python_version": "3.6.8", "ansible_fqdn": "centos.local", "ansible_hostname": "centos", "ansible_nodename": "centos.local", "ansible_domain": "local", "ansible_userspace_bits": "64", "ansible_architecture": "x86_64", "ansible_userspace_architecture": "x86_64", "ansible_machine_id": "0a411048649c4bfabebd654edab20a93", "ansible_dns": {"search": ["local"], "nameservers": ["8.8.4.4"]}, "ansible_system_capabilities_enforced": "True", "ansible_system_capabilities": ["cap_chown", "cap_dac_override", "cap_dac_read_search", "cap_fowner", "cap_fsetid", "cap_kill", "cap_setgid", "cap_setuid", "cap_setpcap", "cap_linux_immutable", "cap_net_bind_service", "cap_net_broadcast", "cap_net_admin", "cap_net_raw", "cap_ipc_lock", "cap_ipc_owner", "cap_sys_module", "cap_sys_rawio", "cap_sys_chroot", "cap_sys_ptrace", "cap_sys_pacct", "cap_sys_admin", "cap_sys_boot", "cap_sys_nice", "cap_sys_resource", "cap_sys_time", "cap_sys_tty_config", "cap_mknod", "cap_lease", "cap_audit_write", "cap_audit_control", "cap_setfcap", "cap_mac_override", "cap_mac_admin", "cap_syslog", "cap_wake_alarm", "cap_block_suspend", "cap_audit_read", "38", "39+ep"], "ansible_fibre_channel_wwn": [], "ansible_is_chroot": false, "ansible_pkg_mgr": "dnf", "ansible_interfaces": ["veth5916669", "eth0", "veth27cb965", "lo", "docker0"], "ansible_lo": {"device": "lo", "mtu": 65536, "active": true, "type": "loopback", "promisc": false, "ipv4": {"address": "127.0.0.1", "broadcast": "", "netmask": "255.0.0.0", "network": "127.0.0.0"}, "ipv6": [{"address": "::1", "prefix": "128", "scope": "host"}], "features": {"rx_checksumming": "on [fixed]", "tx_checksumming": "on", "tx_checksum_ipv4": "off [fixed]", "tx_checksum_ip_generic": "on [fixed]", "tx_checksum_ipv6": "off [fixed]", "tx_checksum_fcoe_crc": "off [fixed]", "tx_checksum_sctp": "on [fixed]", "scatter_gather": "on", "tx_scatter_gather": "on [fixed]", "tx_scatter_gather_fraglist": "on [fixed]", "tcp_segmentation_offload": "on", "tx_tcp_segmentation": "on", "tx_tcp_ecn_segmentation": "on", "tx_tcp_mangleid_segmentation": "on", "tx_tcp6_segmentation": "on", "generic_segmentation_offload": "on", "generic_receive_offload": "on", "large_receive_offload": "off [fixed]", "rx_vlan_offload": "off [fixed]", "tx_vlan_offload": "off [fixed]", "ntuple_filters": "off [fixed]", "receive_hashing": "off [fixed]", "highdma": "on [fixed]", "rx_vlan_filter": "off [fixed]", "vlan_challenged": "on [fixed]", "tx_lockless": "on [fixed]", "netns_local": "on [fixed]", "tx_gso_robust": "off [fixed]", "tx_fcoe_segmentation": "off [fixed]", "tx_gre_segmentation": "off [fixed]", "tx_gre_csum_segmentation": "off [fixed]", "tx_ipxip4_segmentation": "off [fixed]", "tx_ipxip6_segmentation": "off [fixed]", "tx_udp_tnl_segmentation": "off [fixed]", "tx_udp_tnl_csum_segmentation": "off [fixed]", "tx_gso_partial": "off [fixed]", "tx_tunnel_remcsum_segmentation": "off [fixed]", "tx_sctp_segmentation": "on", "tx_esp_segmentation": "off [fixed]", "tx_udp_segmentation": "off [fixed]", "tx_gso_list": "off [fixed]", "rx_gro_list": "off", "tls_hw_rx_offload": "off [fixed]", "fcoe_mtu": "off [fixed]", "tx_nocache_copy": "off [fixed]", "loopback": "on [fixed]", "rx_fcs": "off [fixed]", "rx_all": "off [fixed]", "tx_vlan_stag_hw_insert": "off [fixed]", "rx_vlan_stag_hw_parse": "off [fixed]", "rx_vlan_stag_filter": "off [fixed]", "l2_fwd_offload": "off [fixed]", "hw_tc_offload": "off [fixed]", "esp_hw_offload": "off [fixed]", "esp_tx_csum_hw_offload": "off [fixed]", "rx_udp_tunnel_port_offload": "off [fixed]", "tls_hw_tx_offload": "off [fixed]", "rx_gro_hw": "off [fixed]", "tls_hw_record": "off [fixed]"}, "timestamping": [], "hw_timestamp_filters": []}, "ansible_eth0": {"device": "eth0", "macaddress": "00:15:5d:38:01:01", "mtu": 1500, "active": true, "module": "hv_netvsc", "type": "ether", "pciid": "f4e02b6f-161b-48be-bca6-33d2c9b959d9", "speed": 150, "promisc": false, "ipv4": {"address": "192.168.88.29", "broadcast": "192.168.88.255", "netmask": "255.255.255.0", "network": "192.168.88.0"}, "ipv6": [{"address": "fe80::215:5dff:fe38:101", "prefix": "64", "scope": "link"}], "features": {"rx_checksumming": "on", "tx_checksumming": "on", "tx_checksum_ipv4": "on", "tx_checksum_ip_generic": "off [fixed]", "tx_checksum_ipv6": "on", "tx_checksum_fcoe_crc": "off [fixed]", "tx_checksum_sctp": "off [fixed]", "scatter_gather": "on", "tx_scatter_gather": "on", "tx_scatter_gather_fraglist": "off [fixed]", "tcp_segmentation_offload": "on", "tx_tcp_segmentation": "on", "tx_tcp_ecn_segmentation": "off [fixed]", "tx_tcp_mangleid_segmentation": "off", "tx_tcp6_segmentation": "on", "generic_segmentation_offload": "on", "generic_receive_offload": "on", "large_receive_offload": "off", "rx_vlan_offload": "on [fixed]", "tx_vlan_offload": "on [fixed]", "ntuple_filters": "off [fixed]", "receive_hashing": "on", "highdma": "on [fixed]", "rx_vlan_filter": "off [fixed]", "vlan_challenged": "off [fixed]", "tx_lockless": "off [fixed]", "netns_local": "off [fixed]", "tx_gso_robust": "off [fixed]", "tx_fcoe_segmentation": "off [fixed]", "tx_gre_segmentation": "off [fixed]", "tx_gre_csum_segmentation": "off [fixed]", "tx_ipxip4_segmentation": "off [fixed]", "tx_ipxip6_segmentation": "off [fixed]", "tx_udp_tnl_segmentation": "off [fixed]", "tx_udp_tnl_csum_segmentation": "off [fixed]", "tx_gso_partial": "off [fixed]", "tx_tunnel_remcsum_segmentation": "off [fixed]", "tx_sctp_segmentation": "off [fixed]", "tx_esp_segmentation": "off [fixed]", "tx_udp_segmentation": "off [fixed]", "tx_gso_list": "off [fixed]", "rx_gro_list": "off", "tls_hw_rx_offload": "off [fixed]", "fcoe_mtu": "off [fixed]", "tx_nocache_copy": "off", "loopback": "off [fixed]", "rx_fcs": "off [fixed]", "rx_all": "off [fixed]", "tx_vlan_stag_hw_insert": "off [fixed]", "rx_vlan_stag_hw_parse": "off [fixed]", "rx_vlan_stag_filter": "off [fixed]", "l2_fwd_offload": "off [fixed]", "hw_tc_offload": "off [fixed]", "esp_hw_offload": "off [fixed]", "esp_tx_csum_hw_offload": "off [fixed]", "rx_udp_tunnel_port_offload": "off [fixed]", "tls_hw_tx_offload": "off [fixed]", "rx_gro_hw": "off [fixed]", "tls_hw_record": "off [fixed]"}, "timestamping": [], "hw_timestamp_filters": []}, "ansible_veth27cb965": {"device": "veth27cb965", "macaddress": "be:82:73:6a:cb:8b", "mtu": 1500, "active": true, "type": "ether", "speed": 10000, "promisc": true, "ipv6": [{"address": "fe80::bc82:73ff:fe6a:cb8b", "prefix": "64", "scope": "link"}], "features": {"rx_checksumming": "on", "tx_checksumming": "on", "tx_checksum_ipv4": "off [fixed]", "tx_checksum_ip_generic": "on", "tx_checksum_ipv6": "off [fixed]", "tx_checksum_fcoe_crc": "off [fixed]", "tx_checksum_sctp": "on", "scatter_gather": "on", "tx_scatter_gather": "on", "tx_scatter_gather_fraglist": "on", "tcp_segmentation_offload": "on", "tx_tcp_segmentation": "on", "tx_tcp_ecn_segmentation": "on", "tx_tcp_mangleid_segmentation": "on", "tx_tcp6_segmentation": "on", "generic_segmentation_offload": "on", "generic_receive_offload": "on", "large_receive_offload": "off [fixed]", "rx_vlan_offload": "on", "tx_vlan_offload": "on", "ntuple_filters": "off [fixed]", "receive_hashing": "off [fixed]", "highdma": "on", "rx_vlan_filter": "off [fixed]", "vlan_challenged": "off [fixed]", "tx_lockless": "on [fixed]", "netns_local": "off [fixed]", "tx_gso_robust": "off [fixed]", "tx_fcoe_segmentation": "off [fixed]", "tx_gre_segmentation": "on", "tx_gre_csum_segmentation": "on", "tx_ipxip4_segmentation": "on", "tx_ipxip6_segmentation": "on", "tx_udp_tnl_segmentation": "on", "tx_udp_tnl_csum_segmentation": "on", "tx_gso_partial": "off [fixed]", "tx_tunnel_remcsum_segmentation": "off [fixed]", "tx_sctp_segmentation": "on", "tx_esp_segmentation": "off [fixed]", "tx_udp_segmentation": "off [fixed]", "tx_gso_list": "off [fixed]", "rx_gro_list": "off", "tls_hw_rx_offload": "off [fixed]", "fcoe_mtu": "off [fixed]", "tx_nocache_copy": "off", "loopback": "off [fixed]", "rx_fcs": "off [fixed]", "rx_all": "off [fixed]", "tx_vlan_stag_hw_insert": "on", "rx_vlan_stag_hw_parse": "on", "rx_vlan_stag_filter": "off [fixed]", "l2_fwd_offload": "off [fixed]", "hw_tc_offload": "off [fixed]", "esp_hw_offload": "off [fixed]", "esp_tx_csum_hw_offload": "off [fixed]", "rx_udp_tunnel_port_offload": "off [fixed]", "tls_hw_tx_offload": "off [fixed]", "rx_gro_hw": "off [fixed]", "tls_hw_record": "off [fixed]"}, "timestamping": [], "hw_timestamp_filters": []}, "ansible_veth5916669": {"device": "veth5916669", "macaddress": "46:70:ff:ff:c0:fa", "mtu": 1500, "active": true, "type": "ether", "speed": 10000, "promisc": true, "ipv6": [{"address": "fe80::4470:ffff:feff:c0fa", "prefix": "64", "scope": "link"}], "features": {"rx_checksumming": "on", "tx_checksumming": "on", "tx_checksum_ipv4": "off [fixed]", "tx_checksum_ip_generic": "on", "tx_checksum_ipv6": "off [fixed]", "tx_checksum_fcoe_crc": "off [fixed]", "tx_checksum_sctp": "on", "scatter_gather": "on", "tx_scatter_gather": "on", "tx_scatter_gather_fraglist": "on", "tcp_segmentation_offload": "on", "tx_tcp_segmentation": "on", "tx_tcp_ecn_segmentation": "on", "tx_tcp_mangleid_segmentation": "on", "tx_tcp6_segmentation": "on", "generic_segmentation_offload": "on", "generic_receive_offload": "on", "large_receive_offload": "off [fixed]", "rx_vlan_offload": "on", "tx_vlan_offload": "on", "ntuple_filters": "off [fixed]", "receive_hashing": "off [fixed]", "highdma": "on", "rx_vlan_filter": "off [fixed]", "vlan_challenged": "off [fixed]", "tx_lockless": "on [fixed]", "netns_local": "off [fixed]", "tx_gso_robust": "off [fixed]", "tx_fcoe_segmentation": "off [fixed]", "tx_gre_segmentation": "on", "tx_gre_csum_segmentation": "on", "tx_ipxip4_segmentation": "on", "tx_ipxip6_segmentation": "on", "tx_udp_tnl_segmentation": "on", "tx_udp_tnl_csum_segmentation": "on", "tx_gso_partial": "off [fixed]", "tx_tunnel_remcsum_segmentation": "off [fixed]", "tx_sctp_segmentation": "on", "tx_esp_segmentation": "off [fixed]", "tx_udp_segmentation": "off [fixed]", "tx_gso_list": "off [fixed]", "rx_gro_list": "off", "tls_hw_rx_offload": "off [fixed]", "fcoe_mtu": "off [fixed]", "tx_nocache_copy": "off", "loopback": "off [fixed]", "rx_fcs": "off [fixed]", "rx_all": "off [fixed]", "tx_vlan_stag_hw_insert": "on", "rx_vlan_stag_hw_parse": "on", "rx_vlan_stag_filter": "off [fixed]", "l2_fwd_offload": "off [fixed]", "hw_tc_offload": "off [fixed]", "esp_hw_offload": "off [fixed]", "esp_tx_csum_hw_offload": "off [fixed]", "rx_udp_tunnel_port_offload": "off [fixed]", "tls_hw_tx_offload": "off [fixed]", "rx_gro_hw": "off [fixed]", "tls_hw_record": "off [fixed]"}, "timestamping": [], "hw_timestamp_filters": []}, "ansible_docker0": {"device": "docker0", "macaddress": "02:42:02:b0:b1:9e", "mtu": 1500, "active": true, "type": "bridge", "interfaces": ["veth27cb965", "veth5916669"], "id": "8000.024202b0b19e", "stp": false, "promisc": false, "ipv4": {"address": "172.17.0.1", "broadcast": "172.17.255.255", "netmask": "255.255.0.0", "network": "172.17.0.0"}, "ipv6": [{"address": "fe80::42:2ff:feb0:b19e", "prefix": "64", "scope": "link"}], "features": {"rx_checksumming": "off [fixed]", "tx_checksumming": "on", "tx_checksum_ipv4": "off [fixed]", "tx_checksum_ip_generic": "on", "tx_checksum_ipv6": "off [fixed]", "tx_checksum_fcoe_crc": "off [fixed]", "tx_checksum_sctp": "off [fixed]", "scatter_gather": "on", "tx_scatter_gather": "on", "tx_scatter_gather_fraglist": "on", "tcp_segmentation_offload": "on", "tx_tcp_segmentation": "on", "tx_tcp_ecn_segmentation": "on", "tx_tcp_mangleid_segmentation": "on", "tx_tcp6_segmentation": "on", "generic_segmentation_offload": "on", "generic_receive_offload": "on", "large_receive_offload": "off [fixed]", "rx_vlan_offload": "off [fixed]", "tx_vlan_offload": "on", "ntuple_filters": "off [fixed]", "receive_hashing": "off [fixed]", "highdma": "on", "rx_vlan_filter": "off [fixed]", "vlan_challenged": "off [fixed]", "tx_lockless": "on [fixed]", "netns_local": "on [fixed]", "tx_gso_robust": "off [requested on]", "tx_fcoe_segmentation": "off [requested on]", "tx_gre_segmentation": "on", "tx_gre_csum_segmentation": "on", "tx_ipxip4_segmentation": "on", "tx_ipxip6_segmentation": "on", "tx_udp_tnl_segmentation": "on", "tx_udp_tnl_csum_segmentation": "on", "tx_gso_partial": "on", "tx_tunnel_remcsum_segmentation": "on", "tx_sctp_segmentation": "on", "tx_esp_segmentation": "on", "tx_udp_segmentation": "on", "tx_gso_list": "on", "rx_gro_list": "off", "tls_hw_rx_offload": "off [fixed]", "fcoe_mtu": "off [fixed]", "tx_nocache_copy": "off", "loopback": "off [fixed]", "rx_fcs": "off [fixed]", "rx_all": "off [fixed]", "tx_vlan_stag_hw_insert": "on", "rx_vlan_stag_hw_parse": "off [fixed]", "rx_vlan_stag_filter": "off [fixed]", "l2_fwd_offload": "off [fixed]", "hw_tc_offload": "off [fixed]", "esp_hw_offload": "off [fixed]", "esp_tx_csum_hw_offload": "off [fixed]", "rx_udp_tunnel_port_offload": "off [fixed]", "tls_hw_tx_offload": "off [fixed]", "rx_gro_hw": "off [fixed]", "tls_hw_record": "off [fixed]"}, "timestamping": [], "hw_timestamp_filters": []}, "ansible_default_ipv4": {"gateway": "192.168.88.1", "interface": "eth0", "address": "192.168.88.29", "broadcast": "192.168.88.255", "netmask": "255.255.255.0", "network": "192.168.88.0", "macaddress": "00:15:5d:38:01:01", "mtu": 1500, "type": "ether", "alias": "eth0"}, "ansible_default_ipv6": {}, "ansible_all_ipv4_addresses": ["192.168.88.29", "172.17.0.1"], "ansible_all_ipv6_addresses": ["fe80::215:5dff:fe38:101", "fe80::bc82:73ff:fe6a:cb8b", "fe80::4470:ffff:feff:c0fa", "fe80::42:2ff:feb0:b19e"], "ansible_lsb": {}, "ansible_apparmor": {"status": "disabled"}, "ansible_env": {"LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.m4a=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.oga=01;36:*.opus=01;36:*.spx=01;36:*.xspf=01;36:", "LANG": "en_US.UTF-8", "SUDO_GID": "1000", "SUDO_COMMAND": "/bin/sh -c echo BECOME-SUCCESS-kpuhzpnltdobyffdgkbmalzfpimfrmmt ; /usr/libexec/platform-python /home/leon/.ansible/tmp/ansible-tmp-1628711687.441701-240908-63009186516166/AnsiballZ_setup.py", "USER": "root", "PWD": "/home/leon", "HOME": "/root", "SUDO_USER": "leon", "SUDO_UID": "1000", "MAIL": "/var/mail/root", "SHELL": "/bin/bash", "TERM": "xterm", "SHLVL": "1", "LOGNAME": "root", "PATH": "/sbin:/bin:/usr/sbin:/usr/bin", "_": "/usr/libexec/platform-python"}, "ansible_cmdline": {"BOOT_IMAGE": "(hd0,msdos1)/vmlinuz-4.18.0-305.10.2.el8_4.x86_64", "root": "/dev/mapper/cl-root", "ro": true, "crashkernel": "auto", "resume": "/dev/mapper/cl-swap", "rd.lvm.lv": "cl/swap", "rhgb": true, "quiet": true}, "ansible_proc_cmdline": {"BOOT_IMAGE": "(hd0,msdos1)/vmlinuz-4.18.0-305.10.2.el8_4.x86_64", "root": "/dev/mapper/cl-root", "ro": true, "crashkernel": "auto", "resume": "/dev/mapper/cl-swap", "rd.lvm.lv": ["cl/root", "cl/swap"], "rhgb": true, "quiet": true}, "ansible_selinux_python_present": true, "ansible_selinux": {"status": "enabled", "policyvers": 33, "config_mode": "enforcing", "mode": "enforcing", "type": "targeted"}, "ansible_processor": ["0", "GenuineIntel", "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz"], "ansible_processor_count": 1, "ansible_processor_cores": 1, "ansible_processor_threads_per_core": 1, "ansible_processor_vcpus": 1, "ansible_memtotal_mb": 1752, "ansible_memfree_mb": 63, "ansible_swaptotal_mb": 819, "ansible_swapfree_mb": 0, "ansible_memory_mb": {"real": {"total": 1752, "used": 1689, "free": 63}, "nocache": {"free": 466, "used": 1286}, "swap": {"total": 819, "free": 0, "used": 819, "cached": 22}}, "ansible_bios_date": "12/07/2018", "ansible_bios_version": "090008", "ansible_form_factor": "Desktop", "ansible_product_name": "Virtual Machine", "ansible_product_serial": "7622-6146-5593-1073-7544-3258-92", "ansible_product_uuid": "4d166be1-2b50-ee4e-99cb-b302d6ac77bf", "ansible_product_version": "7.0", "ansible_system_vendor": "Microsoft Corporation", "ansible_devices": {"dm-1": {"virtual": 1, "links": {"ids": ["dm-name-cl-swap", "dm-uuid-LVM-R6OptJRaVHxGrDkkll4gSMTnIMYNjNXhl6g1fAbcERsWmy2t9aOQkDvSVtXRIJKr"], "uuids": ["62c78f19-4e1a-445c-9e00-355eb029bb40"], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "2097152", "partitions": {}, "rotational": "1", "scheduler_mode": "", "sectors": "1679360", "sectorsize": "512", "size": "820.00 MB", "host": "", "holders": []}, "sr0": {"virtual": 1, "links": {"ids": ["ata-Virtual_CD"], "uuids": [], "labels": [], "masters": []}, "vendor": "Msft", "model": "Virtual CD/ROM", "sas_address": null, "sas_device_handle": null, "removable": "1", "support_discard": "0", "partitions": {}, "rotational": "1", "scheduler_mode": "mq-deadline", "sectors": "2097151", "sectorsize": "512", "size": "1024.00 MB", "host": "IDE interface: Intel Corporation 82371AB/EB/MB PIIX4 IDE (rev 01)", "holders": []}, "dm-0": {"virtual": 1, "links": {"ids": ["dm-name-cl-root", "dm-uuid-LVM-R6OptJRaVHxGrDkkll4gSMTnIMYNjNXhIr6TW3fKUCVtd3OtiXfWvIihmeJI7Ksc"], "uuids": ["a32351f8-8967-4133-b5a2-60059b32defd"], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "2097152", "partitions": {}, "rotational": "1", "scheduler_mode": "", "sectors": "38150144", "sectorsize": "512", "size": "18.19 GB", "host": "", "holders": []}, "sda": {"virtual": 1, "links": {"ids": ["scsi-14d53465420202020c246bdd9e2e03541ad2f4da3ecf537a4", "scsi-360022480c246bdd9e2e04da3ecf537a4", "wwn-0x60022480c246bdd9e2e04da3ecf537a4"], "uuids": [], "labels": [], "masters": []}, "vendor": "Msft", "model": "Virtual Disk", "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "2097152", "wwn": "0x60022480c246bdd9e2e04da3ecf537a4", "partitions": {"sda2": {"links": {"ids": ["lvm-pv-uuid-uMHLaC-h0ne-hXhs-qcQO-Pk8P-MHWe-V7i7hK", "scsi-14d53465420202020c246bdd9e2e03541ad2f4da3ecf537a4-part2", "scsi-360022480c246bdd9e2e04da3ecf537a4-part2", "wwn-0x60022480c246bdd9e2e04da3ecf537a4-part2"], "uuids": [], "labels": [], "masters": ["dm-0", "dm-1"]}, "start": "2099200", "sectors": "14678016", "sectorsize": 512, "size": "7.00 GB", "uuid": null, "holders": ["cl-swap", "cl-root"]}, "sda3": {"links": {"ids": ["lvm-pv-uuid-PAk5vO-PQQ8-PGGs-2fk0-jOTg-c60m-hP4qpj", "scsi-14d53465420202020c246bdd9e2e03541ad2f4da3ecf537a4-part3", "scsi-360022480c246bdd9e2e04da3ecf537a4-part3", "wwn-0x60022480c246bdd9e2e04da3ecf537a4-part3"], "uuids": [], "labels": [], "masters": ["dm-0"]}, "start": "16777216", "sectors": "25165824", "sectorsize": 512, "size": "12.00 GB", "uuid": null, "holders": ["cl-root"]}, "sda1": {"links": {"ids": ["scsi-14d53465420202020c246bdd9e2e03541ad2f4da3ecf537a4-part1", "scsi-360022480c246bdd9e2e04da3ecf537a4-part1", "wwn-0x60022480c246bdd9e2e04da3ecf537a4-part1"], "uuids": ["3bb1b9ab-45d3-421b-a6b5-21cd07adfa72"], "labels": [], "masters": []}, "start": "2048", "sectors": "2097152", "sectorsize": 512, "size": "1.00 GB", "uuid": "3bb1b9ab-45d3-421b-a6b5-21cd07adfa72", "holders": []}}, "rotational": "1", "scheduler_mode": "mq-deadline", "sectors": "41943040", "sectorsize": "512", "size": "20.00 GB", "host": "", "holders": []}}, "ansible_device_links": {"ids": {"sda2": ["lvm-pv-uuid-uMHLaC-h0ne-hXhs-qcQO-Pk8P-MHWe-V7i7hK", "scsi-14d53465420202020c246bdd9e2e03541ad2f4da3ecf537a4-part2", "scsi-360022480c246bdd9e2e04da3ecf537a4-part2", "wwn-0x60022480c246bdd9e2e04da3ecf537a4-part2"], "sda1": ["scsi-14d53465420202020c246bdd9e2e03541ad2f4da3ecf537a4-part1", "scsi-360022480c246bdd9e2e04da3ecf537a4-part1", "wwn-0x60022480c246bdd9e2e04da3ecf537a4-part1"], "sda3": ["lvm-pv-uuid-PAk5vO-PQQ8-PGGs-2fk0-jOTg-c60m-hP4qpj", "scsi-14d53465420202020c246bdd9e2e03541ad2f4da3ecf537a4-part3", "scsi-360022480c246bdd9e2e04da3ecf537a4-part3", "wwn-0x60022480c246bdd9e2e04da3ecf537a4-part3"], "sda": ["scsi-14d53465420202020c246bdd9e2e03541ad2f4da3ecf537a4", "scsi-360022480c246bdd9e2e04da3ecf537a4", "wwn-0x60022480c246bdd9e2e04da3ecf537a4"], "dm-1": ["dm-name-cl-swap", "dm-uuid-LVM-R6OptJRaVHxGrDkkll4gSMTnIMYNjNXhl6g1fAbcERsWmy2t9aOQkDvSVtXRIJKr"], "dm-0": ["dm-name-cl-root", "dm-uuid-LVM-R6OptJRaVHxGrDkkll4gSMTnIMYNjNXhIr6TW3fKUCVtd3OtiXfWvIihmeJI7Ksc"], "sr0": ["ata-Virtual_CD"]}, "uuids": {"dm-1": ["62c78f19-4e1a-445c-9e00-355eb029bb40"], "dm-0": ["a32351f8-8967-4133-b5a2-60059b32defd"], "sda1": ["3bb1b9ab-45d3-421b-a6b5-21cd07adfa72"]}, "labels": {}, "masters": {"sda2": ["dm-0", "dm-1"], "sda3": ["dm-0"]}}, "ansible_uptime_seconds": 36907, "ansible_lvm": {"lvs": {"root": {"size_g": "18.19", "vg": "cl"}, "swap": {"size_g": "0.80", "vg": "cl"}}, "vgs": {"cl": {"size_g": "18.99", "free_g": "0", "num_lvs": "2", "num_pvs": "2"}}, "pvs": {"/dev/sda2": {"size_g": "7.00", "free_g": "0", "vg": "cl"}, "/dev/sda3": {"size_g": "12.00", "free_g": "0", "vg": "cl"}}}, "ansible_mounts": [{"mount": "/", "device": "/dev/mapper/cl-root", "fstype": "xfs", "options": "rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota", "size_total": 19522387968, "size_available": 4057866240, "block_size": 4096, "block_total": 4766208, "block_available": 990690, "block_used": 3775518, "inode_total": 8233680, "inode_available": 7927435, "inode_used": 306245, "uuid": "a32351f8-8967-4133-b5a2-60059b32defd"}, {"mount": "/boot", "device": "/dev/sda1", "fstype": "xfs", "options": "rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota", "size_total": 1063256064, "size_available": 858681344, "block_size": 4096, "block_total": 259584, "block_available": 209639, "block_used": 49945, "inode_total": 524288, "inode_available": 523979, "inode_used": 309, "uuid": "3bb1b9ab-45d3-421b-a6b5-21cd07adfa72"}], "ansible_fips": false, "ansible_service_mgr": "systemd", "gather_subset": ["all"], "module_setup": true}, "invocation": {"module_args": {"gather_subset": ["all"], "gather_timeout": 10, "filter": "*", "fact_path": "/etc/ansible/facts.d"}}}\r\n', b'Shared connection to 127.0.0.1 closed.\r\n')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'rm -f -r /home/leon/.ansible/tmp/ansible-tmp-1628711687.441701-240908-63009186516166/ > /dev/null 2>&1 && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+ok: [localtest]
+META: ran handlers
+
+TASK [Show info] ****************************************************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/site.yml:7
+ok: [localtest] => {
+    "msg": "Host ip=[ 192.168.88.29 ]"
+}
+
+TASK [Run OpenLDAP] *************************************************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/site.yml:10
+
+TASK [run_openldap : Start OpenLDAP container] **********************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/roles/run_openldap/tasks/main.yml:2
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'echo ~leon && sleep 0'"'"''
+<127.0.0.1> (0, b'/home/leon\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/leon/.ansible/tmp `"&& mkdir "` echo /home/leon/.ansible/tmp/ansible-tmp-1628711689.4186752-241126-166810847267426 `" && echo ansible-tmp-1628711689.4186752-241126-166810847267426="` echo /home/leon/.ansible/tmp/ansible-tmp-1628711689.4186752-241126-166810847267426 `" ) && sleep 0'"'"''
+<127.0.0.1> (0, b'ansible-tmp-1628711689.4186752-241126-166810847267426=/home/leon/.ansible/tmp/ansible-tmp-1628711689.4186752-241126-166810847267426\n', b'')
+Using module file /usr/lib/python3.6/site-packages/ansible/modules/cloud/docker/docker_container.py
+<127.0.0.1> PUT /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmpozxzcy5r TO /home/leon/.ansible/tmp/ansible-tmp-1628711689.4186752-241126-166810847267426/AnsiballZ_docker_container.py
+<127.0.0.1> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 '[127.0.0.1]'
+<127.0.0.1> (0, b'sftp> put /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmpozxzcy5r /home/leon/.ansible/tmp/ansible-tmp-1628711689.4186752-241126-166810847267426/AnsiballZ_docker_container.py\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'chmod u+x /home/leon/.ansible/tmp/ansible-tmp-1628711689.4186752-241126-166810847267426/ /home/leon/.ansible/tmp/ansible-tmp-1628711689.4186752-241126-166810847267426/AnsiballZ_docker_container.py && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 -tt 127.0.0.1 '/bin/sh -c '"'"'sudo -H -S -n  -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-tzbaocnwyuunakpzxuyxfheqiqpflxca ; /usr/libexec/platform-python /home/leon/.ansible/tmp/ansible-tmp-1628711689.4186752-241126-166810847267426/AnsiballZ_docker_container.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<127.0.0.1> (0, b'\r\n{"changed": false, "ansible_facts": {"docker_container": {"Id": "a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de", "Created": "2021-08-11T19:54:05.634908074Z", "Path": "/opt/bitnami/scripts/openldap/entrypoint.sh", "Args": ["/opt/bitnami/scripts/openldap/run.sh"], "State": {"Status": "running", "Running": true, "Paused": false, "Restarting": false, "OOMKilled": false, "Dead": false, "Pid": 240089, "ExitCode": 0, "Error": "", "StartedAt": "2021-08-11T19:54:09.024548437Z", "FinishedAt": "0001-01-01T00:00:00Z"}, "Image": "sha256:e1c83c50cbb258a501aba534117a8e59e746a7f18ff9cb30378a665a28996ed5", "ResolvConfPath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/resolv.conf", "HostnamePath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/hostname", "HostsPath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/hosts", "LogPath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de-json.log", "Name": "/OpenLDAP-local", "RestartCount": 0, "Driver": "overlay2", "Platform": "linux", "MountLabel": "", "ProcessLabel": "", "AppArmorProfile": "", "ExecIDs": null, "HostConfig": {"Binds": [], "ContainerIDFile": "", "LogConfig": {"Type": "json-file", "Config": {}}, "NetworkMode": "default", "PortBindings": {"1389/tcp": [{"HostIp": "0.0.0.0", "HostPort": "1389"}]}, "RestartPolicy": {"Name": "", "MaximumRetryCount": 0}, "AutoRemove": false, "VolumeDriver": "", "VolumesFrom": null, "CapAdd": null, "CapDrop": null, "CgroupnsMode": "host", "Dns": null, "DnsOptions": null, "DnsSearch": null, "ExtraHosts": null, "GroupAdd": null, "IpcMode": "private", "Cgroup": "", "Links": null, "OomScoreAdj": 0, "PidMode": "", "Privileged": false, "PublishAllPorts": false, "ReadonlyRootfs": false, "SecurityOpt": null, "UTSMode": "", "UsernsMode": "", "ShmSize": 67108864, "Runtime": "runc", "ConsoleSize": [0, 0], "Isolation": "", "CpuShares": 0, "Memory": 0, "NanoCpus": 0, "CgroupParent": "", "BlkioWeight": 0, "BlkioWeightDevice": null, "BlkioDeviceReadBps": null, "BlkioDeviceWriteBps": null, "BlkioDeviceReadIOps": null, "BlkioDeviceWriteIOps": null, "CpuPeriod": 0, "CpuQuota": 0, "CpuRealtimePeriod": 0, "CpuRealtimeRuntime": 0, "CpusetCpus": "", "CpusetMems": "", "Devices": null, "DeviceCgroupRules": null, "DeviceRequests": null, "KernelMemory": 0, "KernelMemoryTCP": 0, "MemoryReservation": 0, "MemorySwap": 0, "MemorySwappiness": null, "OomKillDisable": false, "PidsLimit": null, "Ulimits": null, "CpuCount": 0, "CpuPercent": 0, "IOMaximumIOps": 0, "IOMaximumBandwidth": 0, "MaskedPaths": ["/proc/asound", "/proc/acpi", "/proc/kcore", "/proc/keys", "/proc/latency_stats", "/proc/timer_list", "/proc/timer_stats", "/proc/sched_debug", "/proc/scsi", "/sys/firmware"], "ReadonlyPaths": ["/proc/bus", "/proc/fs", "/proc/irq", "/proc/sys", "/proc/sysrq-trigger"], "Init": false}, "GraphDriver": {"Data": {"LowerDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b-init/diff:/var/lib/docker/overlay2/476b4b0a26f7cf6ef43d7e4d1afdad2ce5ac237eede20026d22db7d223766370/diff:/var/lib/docker/overlay2/c11f7b068fd5a4c330755fa1d50ce888346ae245efdcdbeb6f750339ff076598/diff:/var/lib/docker/overlay2/3668f6a098a305325d11e97774070ad804cc6100c730b020027eba1d19945c66/diff:/var/lib/docker/overlay2/07111b0d60af40091b780388da2ce534214ff8f41de5e2a2c0ed24cbdfeb7d2b/diff:/var/lib/docker/overlay2/cf07cb2a970f9e3beb4383b7a38190dcfc04c3f2b40e048b7d4ba7aa73a29565/diff:/var/lib/docker/overlay2/bfe8cd98df2dd7b129f125210d13f5bc51b05f343e3e417715d2d460c8267b89/diff:/var/lib/docker/overlay2/4108720fceff03971972ac50321f89a70611d705335d2b05af17e2316ff9b2e1/diff:/var/lib/docker/overlay2/7bd454401b47072ee7b1adbc9934e22113040584d3150c5efb93854455817e4f/diff", "MergedDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b/merged", "UpperDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b/diff", "WorkDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b/work"}, "Name": "overlay2"}, "Mounts": [], "Config": {"Hostname": "a4fc107a4091", "Domainname": "", "User": "1001", "AttachStdin": false, "AttachStdout": false, "AttachStderr": false, "ExposedPorts": {"1389/tcp": {}, "1636/tcp": {}}, "Tty": false, "OpenStdin": false, "StdinOnce": false, "Env": ["LDAP_ADMIN_USERNAME=open_admin", "LDAP_ADMIN_PASSWORD=secret", "LDAP_USERS=root,user01,user02", "LDAP_PASSWORDS=wheel,password1,password2", "LDAP_ROOT=dc=example,dc=org", "LDAP_PORT_NUMBER=1389", "PATH=/opt/bitnami/openldap/bin:/opt/bitnami/openldap/sbin:/opt/bitnami/common/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", "HOME=/", "OS_ARCH=amd64", "OS_FLAVOUR=debian-10", "OS_NAME=linux", "BITNAMI_APP_NAME=openldap", "BITNAMI_IMAGE_VERSION=2.4.59-debian-10-r26"], "Cmd": ["/opt/bitnami/scripts/openldap/run.sh"], "Image": "bitnami/openldap:2.4", "Volumes": null, "WorkingDir": "", "Entrypoint": ["/opt/bitnami/scripts/openldap/entrypoint.sh"], "OnBuild": null, "Labels": {"maintainer": "Bitnami <containers@bitnami.com>"}}, "NetworkSettings": {"Bridge": "", "SandboxID": "b66a9a4d1573300c108a60991d24fdd11fa7d3047f02a827f5fcd9c35889d8a9", "HairpinMode": false, "LinkLocalIPv6Address": "", "LinkLocalIPv6PrefixLen": 0, "Ports": {"1389/tcp": [{"HostIp": "0.0.0.0", "HostPort": "1389"}], "1636/tcp": null}, "SandboxKey": "/var/run/docker/netns/b66a9a4d1573", "SecondaryIPAddresses": null, "SecondaryIPv6Addresses": null, "EndpointID": "a4bfe08eddbdc5699a22ba7724aa17e60639d6663ed9f5beffb111993a8a5e37", "Gateway": "172.17.0.1", "GlobalIPv6Address": "", "GlobalIPv6PrefixLen": 0, "IPAddress": "172.17.0.2", "IPPrefixLen": 16, "IPv6Gateway": "", "MacAddress": "02:42:ac:11:00:02", "Networks": {"bridge": {"IPAMConfig": null, "Links": null, "Aliases": null, "NetworkID": "d783baef1a6b911bb2d889a6adf95a5a6c10c13e9d0478506af568b5fa94b617", "EndpointID": "a4bfe08eddbdc5699a22ba7724aa17e60639d6663ed9f5beffb111993a8a5e37", "Gateway": "172.17.0.1", "IPAddress": "172.17.0.2", "IPPrefixLen": 16, "IPv6Gateway": "", "GlobalIPv6Address": "", "GlobalIPv6PrefixLen": 0, "MacAddress": "02:42:ac:11:00:02", "DriverOpts": null}}}}}, "container": {"Id": "a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de", "Created": "2021-08-11T19:54:05.634908074Z", "Path": "/opt/bitnami/scripts/openldap/entrypoint.sh", "Args": ["/opt/bitnami/scripts/openldap/run.sh"], "State": {"Status": "running", "Running": true, "Paused": false, "Restarting": false, "OOMKilled": false, "Dead": false, "Pid": 240089, "ExitCode": 0, "Error": "", "StartedAt": "2021-08-11T19:54:09.024548437Z", "FinishedAt": "0001-01-01T00:00:00Z"}, "Image": "sha256:e1c83c50cbb258a501aba534117a8e59e746a7f18ff9cb30378a665a28996ed5", "ResolvConfPath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/resolv.conf", "HostnamePath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/hostname", "HostsPath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/hosts", "LogPath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de-json.log", "Name": "/OpenLDAP-local", "RestartCount": 0, "Driver": "overlay2", "Platform": "linux", "MountLabel": "", "ProcessLabel": "", "AppArmorProfile": "", "ExecIDs": null, "HostConfig": {"Binds": [], "ContainerIDFile": "", "LogConfig": {"Type": "json-file", "Config": {}}, "NetworkMode": "default", "PortBindings": {"1389/tcp": [{"HostIp": "0.0.0.0", "HostPort": "1389"}]}, "RestartPolicy": {"Name": "", "MaximumRetryCount": 0}, "AutoRemove": false, "VolumeDriver": "", "VolumesFrom": null, "CapAdd": null, "CapDrop": null, "CgroupnsMode": "host", "Dns": null, "DnsOptions": null, "DnsSearch": null, "ExtraHosts": null, "GroupAdd": null, "IpcMode": "private", "Cgroup": "", "Links": null, "OomScoreAdj": 0, "PidMode": "", "Privileged": false, "PublishAllPorts": false, "ReadonlyRootfs": false, "SecurityOpt": null, "UTSMode": "", "UsernsMode": "", "ShmSize": 67108864, "Runtime": "runc", "ConsoleSize": [0, 0], "Isolation": "", "CpuShares": 0, "Memory": 0, "NanoCpus": 0, "CgroupParent": "", "BlkioWeight": 0, "BlkioWeightDevice": null, "BlkioDeviceReadBps": null, "BlkioDeviceWriteBps": null, "BlkioDeviceReadIOps": null, "BlkioDeviceWriteIOps": null, "CpuPeriod": 0, "CpuQuota": 0, "CpuRealtimePeriod": 0, "CpuRealtimeRuntime": 0, "CpusetCpus": "", "CpusetMems": "", "Devices": null, "DeviceCgroupRules": null, "DeviceRequests": null, "KernelMemory": 0, "KernelMemoryTCP": 0, "MemoryReservation": 0, "MemorySwap": 0, "MemorySwappiness": null, "OomKillDisable": false, "PidsLimit": null, "Ulimits": null, "CpuCount": 0, "CpuPercent": 0, "IOMaximumIOps": 0, "IOMaximumBandwidth": 0, "MaskedPaths": ["/proc/asound", "/proc/acpi", "/proc/kcore", "/proc/keys", "/proc/latency_stats", "/proc/timer_list", "/proc/timer_stats", "/proc/sched_debug", "/proc/scsi", "/sys/firmware"], "ReadonlyPaths": ["/proc/bus", "/proc/fs", "/proc/irq", "/proc/sys", "/proc/sysrq-trigger"], "Init": false}, "GraphDriver": {"Data": {"LowerDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b-init/diff:/var/lib/docker/overlay2/476b4b0a26f7cf6ef43d7e4d1afdad2ce5ac237eede20026d22db7d223766370/diff:/var/lib/docker/overlay2/c11f7b068fd5a4c330755fa1d50ce888346ae245efdcdbeb6f750339ff076598/diff:/var/lib/docker/overlay2/3668f6a098a305325d11e97774070ad804cc6100c730b020027eba1d19945c66/diff:/var/lib/docker/overlay2/07111b0d60af40091b780388da2ce534214ff8f41de5e2a2c0ed24cbdfeb7d2b/diff:/var/lib/docker/overlay2/cf07cb2a970f9e3beb4383b7a38190dcfc04c3f2b40e048b7d4ba7aa73a29565/diff:/var/lib/docker/overlay2/bfe8cd98df2dd7b129f125210d13f5bc51b05f343e3e417715d2d460c8267b89/diff:/var/lib/docker/overlay2/4108720fceff03971972ac50321f89a70611d705335d2b05af17e2316ff9b2e1/diff:/var/lib/docker/overlay2/7bd454401b47072ee7b1adbc9934e22113040584d3150c5efb93854455817e4f/diff", "MergedDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b/merged", "UpperDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b/diff", "WorkDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b/work"}, "Name": "overlay2"}, "Mounts": [], "Config": {"Hostname": "a4fc107a4091", "Domainname": "", "User": "1001", "AttachStdin": false, "AttachStdout": false, "AttachStderr": false, "ExposedPorts": {"1389/tcp": {}, "1636/tcp": {}}, "Tty": false, "OpenStdin": false, "StdinOnce": false, "Env": ["LDAP_ADMIN_USERNAME=open_admin", "LDAP_ADMIN_PASSWORD=secret", "LDAP_USERS=root,user01,user02", "LDAP_PASSWORDS=wheel,password1,password2", "LDAP_ROOT=dc=example,dc=org", "LDAP_PORT_NUMBER=1389", "PATH=/opt/bitnami/openldap/bin:/opt/bitnami/openldap/sbin:/opt/bitnami/common/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", "HOME=/", "OS_ARCH=amd64", "OS_FLAVOUR=debian-10", "OS_NAME=linux", "BITNAMI_APP_NAME=openldap", "BITNAMI_IMAGE_VERSION=2.4.59-debian-10-r26"], "Cmd": ["/opt/bitnami/scripts/openldap/run.sh"], "Image": "bitnami/openldap:2.4", "Volumes": null, "WorkingDir": "", "Entrypoint": ["/opt/bitnami/scripts/openldap/entrypoint.sh"], "OnBuild": null, "Labels": {"maintainer": "Bitnami <containers@bitnami.com>"}}, "NetworkSettings": {"Bridge": "", "SandboxID": "b66a9a4d1573300c108a60991d24fdd11fa7d3047f02a827f5fcd9c35889d8a9", "HairpinMode": false, "LinkLocalIPv6Address": "", "LinkLocalIPv6PrefixLen": 0, "Ports": {"1389/tcp": [{"HostIp": "0.0.0.0", "HostPort": "1389"}], "1636/tcp": null}, "SandboxKey": "/var/run/docker/netns/b66a9a4d1573", "SecondaryIPAddresses": null, "SecondaryIPv6Addresses": null, "EndpointID": "a4bfe08eddbdc5699a22ba7724aa17e60639d6663ed9f5beffb111993a8a5e37", "Gateway": "172.17.0.1", "GlobalIPv6Address": "", "GlobalIPv6PrefixLen": 0, "IPAddress": "172.17.0.2", "IPPrefixLen": 16, "IPv6Gateway": "", "MacAddress": "02:42:ac:11:00:02", "Networks": {"bridge": {"IPAMConfig": null, "Links": null, "Aliases": null, "NetworkID": "d783baef1a6b911bb2d889a6adf95a5a6c10c13e9d0478506af568b5fa94b617", "EndpointID": "a4bfe08eddbdc5699a22ba7724aa17e60639d6663ed9f5beffb111993a8a5e37", "Gateway": "172.17.0.1", "IPAddress": "172.17.0.2", "IPPrefixLen": 16, "IPv6Gateway": "", "GlobalIPv6Address": "", "GlobalIPv6PrefixLen": 0, "MacAddress": "02:42:ac:11:00:02", "DriverOpts": null}}}}, "invocation": {"module_args": {"name": "OpenLDAP-local", "image": "bitnami/openldap:2.4", "state": "started", "ports": ["1389:1389"], "env": {"LDAP_ADMIN_USERNAME": "open_admin", "LDAP_ADMIN_PASSWORD": "secret", "LDAP_USERS": "root,user01,user02", "LDAP_PASSWORDS": "wheel,password1,password2", "LDAP_ROOT": "dc=example,dc=org", "LDAP_PORT_NUMBER": "1389"}, "published_ports": ["1389:1389"], "docker_host": "unix://var/run/docker.sock", "tls_hostname": "localhost", "api_version": "auto", "timeout": 60, "tls": false, "validate_certs": false, "debug": false, "auto_remove": false, "cleanup": false, "detach": true, "force_kill": false, "ignore_image": false, "init": false, "interactive": false, "keep_volumes": true, "memory": "0", "output_logs": false, "paused": false, "privileged": false, "pull": false, "purge_networks": false, "read_only": false, "recreate": false, "restart": false, "trust_image_content": false, "tty": false, "ca_cert": null, "client_cert": null, "client_key": null, "ssl_version": null, "blkio_weight": null, "capabilities": null, "cap_drop": null, "command": null, "comparisons": null, "cpu_period": null, "cpu_quota": null, "cpuset_cpus": null, "cpuset_mems": null, "cpu_shares": null, "devices": null, "device_read_bps": null, "device_write_bps": null, "device_read_iops": null, "device_write_iops": null, "dns_servers": null, "dns_opts": null, "dns_search_domains": null, "domainname": null, "entrypoint": null, "env_file": null, "etc_hosts": null, "exposed_ports": null, "groups": null, "healthcheck": null, "hostname": null, "ipc_mode": null, "kernel_memory": null, "kill_signal": null, "labels": null, "links": null, "log_driver": null, "log_options": null, "mac_address": null, "memory_reservation": null, "memory_swap": null, "memory_swappiness": null, "mounts": null, "network_mode": null, "networks": null, "networks_cli_compatible": null, "oom_killer": null, "oom_score_adj": null, "pid_mode": null, "pids_limit": null, "restart_policy": null, "restart_retries": null, "runtime": null, "security_opts": null, "shm_size": null, "stop_signal": null, "stop_timeout": null, "sysctls": null, "tmpfs": null, "ulimits": null, "user": null, "userns_mode": null, "uts": null, "volume_driver": null, "volumes": null, "volumes_from": null, "working_dir": null}}}\r\n', b'Shared connection to 127.0.0.1 closed.\r\n')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'rm -f -r /home/leon/.ansible/tmp/ansible-tmp-1628711689.4186752-241126-166810847267426/ > /dev/null 2>&1 && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+ok: [localtest] => {
+    "ansible_facts": {
+        "docker_container": {
+            "AppArmorProfile": "",
+            "Args": [
+                "/opt/bitnami/scripts/openldap/run.sh"
+            ],
+            "Config": {
+                "AttachStderr": false,
+                "AttachStdin": false,
+                "AttachStdout": false,
+                "Cmd": [
+                    "/opt/bitnami/scripts/openldap/run.sh"
+                ],
+                "Domainname": "",
+                "Entrypoint": [
+                    "/opt/bitnami/scripts/openldap/entrypoint.sh"
+                ],
+                "Env": [
+                    "LDAP_ADMIN_USERNAME=open_admin",
+                    "LDAP_ADMIN_PASSWORD=secret",
+                    "LDAP_USERS=root,user01,user02",
+                    "LDAP_PASSWORDS=wheel,password1,password2",
+                    "LDAP_ROOT=dc=example,dc=org",
+                    "LDAP_PORT_NUMBER=1389",
+                    "PATH=/opt/bitnami/openldap/bin:/opt/bitnami/openldap/sbin:/opt/bitnami/common/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                    "HOME=/",
+                    "OS_ARCH=amd64",
+                    "OS_FLAVOUR=debian-10",
+                    "OS_NAME=linux",
+                    "BITNAMI_APP_NAME=openldap",
+                    "BITNAMI_IMAGE_VERSION=2.4.59-debian-10-r26"
+                ],
+                "ExposedPorts": {
+                    "1389/tcp": {},
+                    "1636/tcp": {}
+                },
+                "Hostname": "a4fc107a4091",
+                "Image": "bitnami/openldap:2.4",
+                "Labels": {
+                    "maintainer": "Bitnami <containers@bitnami.com>"
+                },
+                "OnBuild": null,
+                "OpenStdin": false,
+                "StdinOnce": false,
+                "Tty": false,
+                "User": "1001",
+                "Volumes": null,
+                "WorkingDir": ""
+            },
+            "Created": "2021-08-11T19:54:05.634908074Z",
+            "Driver": "overlay2",
+            "ExecIDs": null,
+            "GraphDriver": {
+                "Data": {
+                    "LowerDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b-init/diff:/var/lib/docker/overlay2/476b4b0a26f7cf6ef43d7e4d1afdad2ce5ac237eede20026d22db7d223766370/diff:/var/lib/docker/overlay2/c11f7b068fd5a4c330755fa1d50ce888346ae245efdcdbeb6f750339ff076598/diff:/var/lib/docker/overlay2/3668f6a098a305325d11e97774070ad804cc6100c730b020027eba1d19945c66/diff:/var/lib/docker/overlay2/07111b0d60af40091b780388da2ce534214ff8f41de5e2a2c0ed24cbdfeb7d2b/diff:/var/lib/docker/overlay2/cf07cb2a970f9e3beb4383b7a38190dcfc04c3f2b40e048b7d4ba7aa73a29565/diff:/var/lib/docker/overlay2/bfe8cd98df2dd7b129f125210d13f5bc51b05f343e3e417715d2d460c8267b89/diff:/var/lib/docker/overlay2/4108720fceff03971972ac50321f89a70611d705335d2b05af17e2316ff9b2e1/diff:/var/lib/docker/overlay2/7bd454401b47072ee7b1adbc9934e22113040584d3150c5efb93854455817e4f/diff",
+                    "MergedDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b/merged",
+                    "UpperDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b/diff",
+                    "WorkDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b/work"
+                },
+                "Name": "overlay2"
+            },
+            "HostConfig": {
+                "AutoRemove": false,
+                "Binds": [],
+                "BlkioDeviceReadBps": null,
+                "BlkioDeviceReadIOps": null,
+                "BlkioDeviceWriteBps": null,
+                "BlkioDeviceWriteIOps": null,
+                "BlkioWeight": 0,
+                "BlkioWeightDevice": null,
+                "CapAdd": null,
+                "CapDrop": null,
+                "Cgroup": "",
+                "CgroupParent": "",
+                "CgroupnsMode": "host",
+                "ConsoleSize": [
+                    0,
+                    0
+                ],
+                "ContainerIDFile": "",
+                "CpuCount": 0,
+                "CpuPercent": 0,
+                "CpuPeriod": 0,
+                "CpuQuota": 0,
+                "CpuRealtimePeriod": 0,
+                "CpuRealtimeRuntime": 0,
+                "CpuShares": 0,
+                "CpusetCpus": "",
+                "CpusetMems": "",
+                "DeviceCgroupRules": null,
+                "DeviceRequests": null,
+                "Devices": null,
+                "Dns": null,
+                "DnsOptions": null,
+                "DnsSearch": null,
+                "ExtraHosts": null,
+                "GroupAdd": null,
+                "IOMaximumBandwidth": 0,
+                "IOMaximumIOps": 0,
+                "Init": false,
+                "IpcMode": "private",
+                "Isolation": "",
+                "KernelMemory": 0,
+                "KernelMemoryTCP": 0,
+                "Links": null,
+                "LogConfig": {
+                    "Config": {},
+                    "Type": "json-file"
+                },
+                "MaskedPaths": [
+                    "/proc/asound",
+                    "/proc/acpi",
+                    "/proc/kcore",
+                    "/proc/keys",
+                    "/proc/latency_stats",
+                    "/proc/timer_list",
+                    "/proc/timer_stats",
+                    "/proc/sched_debug",
+                    "/proc/scsi",
+                    "/sys/firmware"
+                ],
+                "Memory": 0,
+                "MemoryReservation": 0,
+                "MemorySwap": 0,
+                "MemorySwappiness": null,
+                "NanoCpus": 0,
+                "NetworkMode": "default",
+                "OomKillDisable": false,
+                "OomScoreAdj": 0,
+                "PidMode": "",
+                "PidsLimit": null,
+                "PortBindings": {
+                    "1389/tcp": [
+                        {
+                            "HostIp": "0.0.0.0",
+                            "HostPort": "1389"
+                        }
+                    ]
+                },
+                "Privileged": false,
+                "PublishAllPorts": false,
+                "ReadonlyPaths": [
+                    "/proc/bus",
+                    "/proc/fs",
+                    "/proc/irq",
+                    "/proc/sys",
+                    "/proc/sysrq-trigger"
+                ],
+                "ReadonlyRootfs": false,
+                "RestartPolicy": {
+                    "MaximumRetryCount": 0,
+                    "Name": ""
+                },
+                "Runtime": "runc",
+                "SecurityOpt": null,
+                "ShmSize": 67108864,
+                "UTSMode": "",
+                "Ulimits": null,
+                "UsernsMode": "",
+                "VolumeDriver": "",
+                "VolumesFrom": null
+            },
+            "HostnamePath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/hostname",
+            "HostsPath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/hosts",
+            "Id": "a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de",
+            "Image": "sha256:e1c83c50cbb258a501aba534117a8e59e746a7f18ff9cb30378a665a28996ed5",
+            "LogPath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de-json.log",
+            "MountLabel": "",
+            "Mounts": [],
+            "Name": "/OpenLDAP-local",
+            "NetworkSettings": {
+                "Bridge": "",
+                "EndpointID": "a4bfe08eddbdc5699a22ba7724aa17e60639d6663ed9f5beffb111993a8a5e37",
+                "Gateway": "172.17.0.1",
+                "GlobalIPv6Address": "",
+                "GlobalIPv6PrefixLen": 0,
+                "HairpinMode": false,
+                "IPAddress": "172.17.0.2",
+                "IPPrefixLen": 16,
+                "IPv6Gateway": "",
+                "LinkLocalIPv6Address": "",
+                "LinkLocalIPv6PrefixLen": 0,
+                "MacAddress": "02:42:ac:11:00:02",
+                "Networks": {
+                    "bridge": {
+                        "Aliases": null,
+                        "DriverOpts": null,
+                        "EndpointID": "a4bfe08eddbdc5699a22ba7724aa17e60639d6663ed9f5beffb111993a8a5e37",
+                        "Gateway": "172.17.0.1",
+                        "GlobalIPv6Address": "",
+                        "GlobalIPv6PrefixLen": 0,
+                        "IPAMConfig": null,
+                        "IPAddress": "172.17.0.2",
+                        "IPPrefixLen": 16,
+                        "IPv6Gateway": "",
+                        "Links": null,
+                        "MacAddress": "02:42:ac:11:00:02",
+                        "NetworkID": "d783baef1a6b911bb2d889a6adf95a5a6c10c13e9d0478506af568b5fa94b617"
+                    }
+                },
+                "Ports": {
+                    "1389/tcp": [
+                        {
+                            "HostIp": "0.0.0.0",
+                            "HostPort": "1389"
+                        }
+                    ],
+                    "1636/tcp": null
+                },
+                "SandboxID": "b66a9a4d1573300c108a60991d24fdd11fa7d3047f02a827f5fcd9c35889d8a9",
+                "SandboxKey": "/var/run/docker/netns/b66a9a4d1573",
+                "SecondaryIPAddresses": null,
+                "SecondaryIPv6Addresses": null
+            },
+            "Path": "/opt/bitnami/scripts/openldap/entrypoint.sh",
+            "Platform": "linux",
+            "ProcessLabel": "",
+            "ResolvConfPath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/resolv.conf",
+            "RestartCount": 0,
+            "State": {
+                "Dead": false,
+                "Error": "",
+                "ExitCode": 0,
+                "FinishedAt": "0001-01-01T00:00:00Z",
+                "OOMKilled": false,
+                "Paused": false,
+                "Pid": 240089,
+                "Restarting": false,
+                "Running": true,
+                "StartedAt": "2021-08-11T19:54:09.024548437Z",
+                "Status": "running"
+            }
+        }
+    },
+    "changed": false,
+    "container": {
+        "AppArmorProfile": "",
+        "Args": [
+            "/opt/bitnami/scripts/openldap/run.sh"
+        ],
+        "Config": {
+            "AttachStderr": false,
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "Cmd": [
+                "/opt/bitnami/scripts/openldap/run.sh"
+            ],
+            "Domainname": "",
+            "Entrypoint": [
+                "/opt/bitnami/scripts/openldap/entrypoint.sh"
+            ],
+            "Env": [
+                "LDAP_ADMIN_USERNAME=open_admin",
+                "LDAP_ADMIN_PASSWORD=secret",
+                "LDAP_USERS=root,user01,user02",
+                "LDAP_PASSWORDS=wheel,password1,password2",
+                "LDAP_ROOT=dc=example,dc=org",
+                "LDAP_PORT_NUMBER=1389",
+                "PATH=/opt/bitnami/openldap/bin:/opt/bitnami/openldap/sbin:/opt/bitnami/common/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "HOME=/",
+                "OS_ARCH=amd64",
+                "OS_FLAVOUR=debian-10",
+                "OS_NAME=linux",
+                "BITNAMI_APP_NAME=openldap",
+                "BITNAMI_IMAGE_VERSION=2.4.59-debian-10-r26"
+            ],
+            "ExposedPorts": {
+                "1389/tcp": {},
+                "1636/tcp": {}
+            },
+            "Hostname": "a4fc107a4091",
+            "Image": "bitnami/openldap:2.4",
+            "Labels": {
+                "maintainer": "Bitnami <containers@bitnami.com>"
+            },
+            "OnBuild": null,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Tty": false,
+            "User": "1001",
+            "Volumes": null,
+            "WorkingDir": ""
+        },
+        "Created": "2021-08-11T19:54:05.634908074Z",
+        "Driver": "overlay2",
+        "ExecIDs": null,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b-init/diff:/var/lib/docker/overlay2/476b4b0a26f7cf6ef43d7e4d1afdad2ce5ac237eede20026d22db7d223766370/diff:/var/lib/docker/overlay2/c11f7b068fd5a4c330755fa1d50ce888346ae245efdcdbeb6f750339ff076598/diff:/var/lib/docker/overlay2/3668f6a098a305325d11e97774070ad804cc6100c730b020027eba1d19945c66/diff:/var/lib/docker/overlay2/07111b0d60af40091b780388da2ce534214ff8f41de5e2a2c0ed24cbdfeb7d2b/diff:/var/lib/docker/overlay2/cf07cb2a970f9e3beb4383b7a38190dcfc04c3f2b40e048b7d4ba7aa73a29565/diff:/var/lib/docker/overlay2/bfe8cd98df2dd7b129f125210d13f5bc51b05f343e3e417715d2d460c8267b89/diff:/var/lib/docker/overlay2/4108720fceff03971972ac50321f89a70611d705335d2b05af17e2316ff9b2e1/diff:/var/lib/docker/overlay2/7bd454401b47072ee7b1adbc9934e22113040584d3150c5efb93854455817e4f/diff",
+                "MergedDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b/merged",
+                "UpperDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b/diff",
+                "WorkDir": "/var/lib/docker/overlay2/85eeea9732949840adbc098f81f0902476f9c85f1e888b2551f50055f5193c6b/work"
+            },
+            "Name": "overlay2"
+        },
+        "HostConfig": {
+            "AutoRemove": false,
+            "Binds": [],
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceWriteIOps": null,
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "Cgroup": "",
+            "CgroupParent": "",
+            "CgroupnsMode": "host",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "ContainerIDFile": "",
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpuShares": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "Devices": null,
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IOMaximumBandwidth": 0,
+            "IOMaximumIOps": 0,
+            "Init": false,
+            "IpcMode": "private",
+            "Isolation": "",
+            "KernelMemory": 0,
+            "KernelMemoryTCP": 0,
+            "Links": null,
+            "LogConfig": {
+                "Config": {},
+                "Type": "json-file"
+            },
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware"
+            ],
+            "Memory": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "NanoCpus": 0,
+            "NetworkMode": "default",
+            "OomKillDisable": false,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "PidsLimit": null,
+            "PortBindings": {
+                "1389/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "1389"
+                    }
+                ]
+            },
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ],
+            "ReadonlyRootfs": false,
+            "RestartPolicy": {
+                "MaximumRetryCount": 0,
+                "Name": ""
+            },
+            "Runtime": "runc",
+            "SecurityOpt": null,
+            "ShmSize": 67108864,
+            "UTSMode": "",
+            "Ulimits": null,
+            "UsernsMode": "",
+            "VolumeDriver": "",
+            "VolumesFrom": null
+        },
+        "HostnamePath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/hostname",
+        "HostsPath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/hosts",
+        "Id": "a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de",
+        "Image": "sha256:e1c83c50cbb258a501aba534117a8e59e746a7f18ff9cb30378a665a28996ed5",
+        "LogPath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de-json.log",
+        "MountLabel": "",
+        "Mounts": [],
+        "Name": "/OpenLDAP-local",
+        "NetworkSettings": {
+            "Bridge": "",
+            "EndpointID": "a4bfe08eddbdc5699a22ba7724aa17e60639d6663ed9f5beffb111993a8a5e37",
+            "Gateway": "172.17.0.1",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "HairpinMode": false,
+            "IPAddress": "172.17.0.2",
+            "IPPrefixLen": 16,
+            "IPv6Gateway": "",
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "MacAddress": "02:42:ac:11:00:02",
+            "Networks": {
+                "bridge": {
+                    "Aliases": null,
+                    "DriverOpts": null,
+                    "EndpointID": "a4bfe08eddbdc5699a22ba7724aa17e60639d6663ed9f5beffb111993a8a5e37",
+                    "Gateway": "172.17.0.1",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "IPAMConfig": null,
+                    "IPAddress": "172.17.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "Links": null,
+                    "MacAddress": "02:42:ac:11:00:02",
+                    "NetworkID": "d783baef1a6b911bb2d889a6adf95a5a6c10c13e9d0478506af568b5fa94b617"
+                }
+            },
+            "Ports": {
+                "1389/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "1389"
+                    }
+                ],
+                "1636/tcp": null
+            },
+            "SandboxID": "b66a9a4d1573300c108a60991d24fdd11fa7d3047f02a827f5fcd9c35889d8a9",
+            "SandboxKey": "/var/run/docker/netns/b66a9a4d1573",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null
+        },
+        "Path": "/opt/bitnami/scripts/openldap/entrypoint.sh",
+        "Platform": "linux",
+        "ProcessLabel": "",
+        "ResolvConfPath": "/var/lib/docker/containers/a4fc107a40911aaf6cf0cda0b0a068e049ba20b1c9e1a43dae5bb76e4af444de/resolv.conf",
+        "RestartCount": 0,
+        "State": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 240089,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2021-08-11T19:54:09.024548437Z",
+            "Status": "running"
+        }
+    },
+    "invocation": {
+        "module_args": {
+            "api_version": "auto",
+            "auto_remove": false,
+            "blkio_weight": null,
+            "ca_cert": null,
+            "cap_drop": null,
+            "capabilities": null,
+            "cleanup": false,
+            "client_cert": null,
+            "client_key": null,
+            "command": null,
+            "comparisons": null,
+            "cpu_period": null,
+            "cpu_quota": null,
+            "cpu_shares": null,
+            "cpuset_cpus": null,
+            "cpuset_mems": null,
+            "debug": false,
+            "detach": true,
+            "device_read_bps": null,
+            "device_read_iops": null,
+            "device_write_bps": null,
+            "device_write_iops": null,
+            "devices": null,
+            "dns_opts": null,
+            "dns_search_domains": null,
+            "dns_servers": null,
+            "docker_host": "unix://var/run/docker.sock",
+            "domainname": null,
+            "entrypoint": null,
+            "env": {
+                "LDAP_ADMIN_PASSWORD": "secret",
+                "LDAP_ADMIN_USERNAME": "open_admin",
+                "LDAP_PASSWORDS": "wheel,password1,password2",
+                "LDAP_PORT_NUMBER": "1389",
+                "LDAP_ROOT": "dc=example,dc=org",
+                "LDAP_USERS": "root,user01,user02"
+            },
+            "env_file": null,
+            "etc_hosts": null,
+            "exposed_ports": null,
+            "force_kill": false,
+            "groups": null,
+            "healthcheck": null,
+            "hostname": null,
+            "ignore_image": false,
+            "image": "bitnami/openldap:2.4",
+            "init": false,
+            "interactive": false,
+            "ipc_mode": null,
+            "keep_volumes": true,
+            "kernel_memory": null,
+            "kill_signal": null,
+            "labels": null,
+            "links": null,
+            "log_driver": null,
+            "log_options": null,
+            "mac_address": null,
+            "memory": "0",
+            "memory_reservation": null,
+            "memory_swap": null,
+            "memory_swappiness": null,
+            "mounts": null,
+            "name": "OpenLDAP-local",
+            "network_mode": null,
+            "networks": null,
+            "networks_cli_compatible": null,
+            "oom_killer": null,
+            "oom_score_adj": null,
+            "output_logs": false,
+            "paused": false,
+            "pid_mode": null,
+            "pids_limit": null,
+            "ports": [
+                "1389:1389"
+            ],
+            "privileged": false,
+            "published_ports": [
+                "1389:1389"
+            ],
+            "pull": false,
+            "purge_networks": false,
+            "read_only": false,
+            "recreate": false,
+            "restart": false,
+            "restart_policy": null,
+            "restart_retries": null,
+            "runtime": null,
+            "security_opts": null,
+            "shm_size": null,
+            "ssl_version": null,
+            "state": "started",
+            "stop_signal": null,
+            "stop_timeout": null,
+            "sysctls": null,
+            "timeout": 60,
+            "tls": false,
+            "tls_hostname": "localhost",
+            "tmpfs": null,
+            "trust_image_content": false,
+            "tty": false,
+            "ulimits": null,
+            "user": null,
+            "userns_mode": null,
+            "uts": null,
+            "validate_certs": false,
+            "volume_driver": null,
+            "volumes": null,
+            "volumes_from": null,
+            "working_dir": null
+        }
+    }
+}
+
+TASK [run_openldap : Install openldap-clients for testing] **********************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/roles/run_openldap/tasks/main.yml:19
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'echo ~leon && sleep 0'"'"''
+<127.0.0.1> (0, b'/home/leon\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/leon/.ansible/tmp `"&& mkdir "` echo /home/leon/.ansible/tmp/ansible-tmp-1628711691.461827-241254-5300868768211 `" && echo ansible-tmp-1628711691.461827-241254-5300868768211="` echo /home/leon/.ansible/tmp/ansible-tmp-1628711691.461827-241254-5300868768211 `" ) && sleep 0'"'"''
+<127.0.0.1> (0, b'ansible-tmp-1628711691.461827-241254-5300868768211=/home/leon/.ansible/tmp/ansible-tmp-1628711691.461827-241254-5300868768211\n', b'')
+Using module file /usr/lib/python3.6/site-packages/ansible/modules/packaging/os/dnf.py
+<127.0.0.1> PUT /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmpot2i8lkr TO /home/leon/.ansible/tmp/ansible-tmp-1628711691.461827-241254-5300868768211/AnsiballZ_dnf.py
+<127.0.0.1> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 '[127.0.0.1]'
+<127.0.0.1> (0, b'sftp> put /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmpot2i8lkr /home/leon/.ansible/tmp/ansible-tmp-1628711691.461827-241254-5300868768211/AnsiballZ_dnf.py\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'chmod u+x /home/leon/.ansible/tmp/ansible-tmp-1628711691.461827-241254-5300868768211/ /home/leon/.ansible/tmp/ansible-tmp-1628711691.461827-241254-5300868768211/AnsiballZ_dnf.py && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 -tt 127.0.0.1 '/bin/sh -c '"'"'sudo -H -S -n  -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-rlwlnrdzarjcoyxkiapwoeunfymxijyr ; /usr/libexec/platform-python /home/leon/.ansible/tmp/ansible-tmp-1628711691.461827-241254-5300868768211/AnsiballZ_dnf.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<127.0.0.1> (0, b'\r\n{"msg": "Nothing to do", "changed": false, "results": [], "rc": 0, "invocation": {"module_args": {"name": ["openldap-clients"], "state": "latest", "allow_downgrade": false, "autoremove": false, "bugfix": false, "disable_gpg_check": false, "disable_plugin": [], "disablerepo": [], "download_only": false, "enable_plugin": [], "enablerepo": [], "exclude": [], "installroot": "/", "install_repoquery": true, "install_weak_deps": true, "security": false, "skip_broken": false, "update_cache": false, "update_only": false, "validate_certs": true, "lock_timeout": 30, "conf_file": null, "disable_excludes": null, "download_dir": null, "list": null, "releasever": null}}}\r\n', b'Shared connection to 127.0.0.1 closed.\r\n')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'rm -f -r /home/leon/.ansible/tmp/ansible-tmp-1628711691.461827-241254-5300868768211/ > /dev/null 2>&1 && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+ok: [localtest] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "allow_downgrade": false,
+            "autoremove": false,
+            "bugfix": false,
+            "conf_file": null,
+            "disable_excludes": null,
+            "disable_gpg_check": false,
+            "disable_plugin": [],
+            "disablerepo": [],
+            "download_dir": null,
+            "download_only": false,
+            "enable_plugin": [],
+            "enablerepo": [],
+            "exclude": [],
+            "install_repoquery": true,
+            "install_weak_deps": true,
+            "installroot": "/",
+            "list": null,
+            "lock_timeout": 30,
+            "name": [
+                "openldap-clients"
+            ],
+            "releasever": null,
+            "security": false,
+            "skip_broken": false,
+            "state": "latest",
+            "update_cache": false,
+            "update_only": false,
+            "validate_certs": true
+        }
+    },
+    "msg": "Nothing to do",
+    "rc": 0,
+    "results": []
+}
+
+TASK [run_openldap : Test 1, making request with ldapsearch...] *****************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/roles/run_openldap/tasks/main.yml:24
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'echo ~leon && sleep 0'"'"''
+<127.0.0.1> (0, b'/home/leon\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/leon/.ansible/tmp `"&& mkdir "` echo /home/leon/.ansible/tmp/ansible-tmp-1628711694.9248068-241371-238691126717331 `" && echo ansible-tmp-1628711694.9248068-241371-238691126717331="` echo /home/leon/.ansible/tmp/ansible-tmp-1628711694.9248068-241371-238691126717331 `" ) && sleep 0'"'"''
+<127.0.0.1> (0, b'ansible-tmp-1628711694.9248068-241371-238691126717331=/home/leon/.ansible/tmp/ansible-tmp-1628711694.9248068-241371-238691126717331\n', b'')
+Using module file /usr/lib/python3.6/site-packages/ansible/modules/commands/command.py
+<127.0.0.1> PUT /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmp8q9mzmzx TO /home/leon/.ansible/tmp/ansible-tmp-1628711694.9248068-241371-238691126717331/AnsiballZ_command.py
+<127.0.0.1> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 '[127.0.0.1]'
+<127.0.0.1> (0, b'sftp> put /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmp8q9mzmzx /home/leon/.ansible/tmp/ansible-tmp-1628711694.9248068-241371-238691126717331/AnsiballZ_command.py\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'chmod u+x /home/leon/.ansible/tmp/ansible-tmp-1628711694.9248068-241371-238691126717331/ /home/leon/.ansible/tmp/ansible-tmp-1628711694.9248068-241371-238691126717331/AnsiballZ_command.py && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 -tt 127.0.0.1 '/bin/sh -c '"'"'sudo -H -S -n  -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-xofgweixnnxoyhsuzszedjxhtlpbmabn ; /usr/libexec/platform-python /home/leon/.ansible/tmp/ansible-tmp-1628711694.9248068-241371-238691126717331/AnsiballZ_command.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<127.0.0.1> (0, b'\r\n{"cmd": "ldapsearch -x -b dc=example,dc=org -H ldap://192.168.88.29:1389 |  egrep \'member.+dc=example,dc=org\'", "stdout": "member: cn=root,ou=users,dc=example,dc=org\\nmember: cn=user01,ou=users,dc=example,dc=org\\nmember: cn=user02,ou=users,dc=example,dc=org", "stderr": "", "rc": 0, "start": "2021-08-11 22:54:55.506652", "end": "2021-08-11 22:54:55.621627", "delta": "0:00:00.114975", "changed": true, "invocation": {"module_args": {"_raw_params": "ldapsearch -x -b dc=example,dc=org -H ldap://192.168.88.29:1389 |  egrep \'member.+dc=example,dc=org\'", "_uses_shell": true, "warn": true, "stdin_add_newline": true, "strip_empty_ends": true, "argv": null, "chdir": null, "executable": null, "creates": null, "removes": null, "stdin": null}}}\r\n', b'Shared connection to 127.0.0.1 closed.\r\n')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'rm -f -r /home/leon/.ansible/tmp/ansible-tmp-1628711694.9248068-241371-238691126717331/ > /dev/null 2>&1 && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+changed: [localtest] => {
+    "changed": true,
+    "cmd": "ldapsearch -x -b dc=example,dc=org -H ldap://192.168.88.29:1389 |  egrep 'member.+dc=example,dc=org'",
+    "delta": "0:00:00.114975",
+    "end": "2021-08-11 22:54:55.621627",
+    "failed_when_result": false,
+    "invocation": {
+        "module_args": {
+            "_raw_params": "ldapsearch -x -b dc=example,dc=org -H ldap://192.168.88.29:1389 |  egrep 'member.+dc=example,dc=org'",
+            "_uses_shell": true,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2021-08-11 22:54:55.506652",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "member: cn=root,ou=users,dc=example,dc=org\nmember: cn=user01,ou=users,dc=example,dc=org\nmember: cn=user02,ou=users,dc=example,dc=org",
+    "stdout_lines": [
+        "member: cn=root,ou=users,dc=example,dc=org",
+        "member: cn=user01,ou=users,dc=example,dc=org",
+        "member: cn=user02,ou=users,dc=example,dc=org"
+    ]
+}
+
+TASK [run_openldap : Test 1] ****************************************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/roles/run_openldap/tasks/main.yml:32
+ok: [localtest] => {
+    "msg": "Test passed"
+}
+
+TASK [Run Rancher] **************************************************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/site.yml:14
+
+TASK [run_rancher : Start Rancher container] ************************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/roles/run_rancher/tasks/main.yml:3
+skipping: [localtest] => {
+    "changed": false,
+    "skip_reason": "Conditional result was False"
+}
+
+TASK [run_rancher : pause] ******************************************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/roles/run_rancher/tasks/main.yml:15
+skipping: [localtest] => {
+    "changed": false,
+    "skip_reason": "Conditional result was False"
+}
+
+TASK [run_rancher : Check server up] ********************************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/roles/run_rancher/tasks/main.yml:19
+skipping: [localtest] => {
+    "changed": false,
+    "skip_reason": "Conditional result was False"
+}
+
+TASK [run_rancher : pause] ******************************************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/roles/run_rancher/tasks/main.yml:30
+skipping: [localtest] => {
+    "changed": false,
+    "skip_reason": "Conditional result was False"
+}
+
+TASK [run_rancher : Check server up] ********************************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/roles/run_rancher/tasks/main.yml:34
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'echo ~leon && sleep 0'"'"''
+<127.0.0.1> (0, b'/home/leon\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/leon/.ansible/tmp `"&& mkdir "` echo /home/leon/.ansible/tmp/ansible-tmp-1628711696.0183685-241503-93881099832458 `" && echo ansible-tmp-1628711696.0183685-241503-93881099832458="` echo /home/leon/.ansible/tmp/ansible-tmp-1628711696.0183685-241503-93881099832458 `" ) && sleep 0'"'"''
+<127.0.0.1> (0, b'ansible-tmp-1628711696.0183685-241503-93881099832458=/home/leon/.ansible/tmp/ansible-tmp-1628711696.0183685-241503-93881099832458\n', b'')
+Using module file /usr/lib/python3.6/site-packages/ansible/modules/net_tools/basics/uri.py
+<127.0.0.1> PUT /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmpsphv5scv TO /home/leon/.ansible/tmp/ansible-tmp-1628711696.0183685-241503-93881099832458/AnsiballZ_uri.py
+<127.0.0.1> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 '[127.0.0.1]'
+<127.0.0.1> (0, b'sftp> put /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmpsphv5scv /home/leon/.ansible/tmp/ansible-tmp-1628711696.0183685-241503-93881099832458/AnsiballZ_uri.py\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'chmod u+x /home/leon/.ansible/tmp/ansible-tmp-1628711696.0183685-241503-93881099832458/ /home/leon/.ansible/tmp/ansible-tmp-1628711696.0183685-241503-93881099832458/AnsiballZ_uri.py && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 -tt 127.0.0.1 '/bin/sh -c '"'"'sudo -H -S -n  -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-qgqtwoqtgxyhkuswtulajkgkjgmubpas ; /usr/libexec/platform-python /home/leon/.ansible/tmp/ansible-tmp-1628711696.0183685-241503-93881099832458/AnsiballZ_uri.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<127.0.0.1> (0, b'\r\n{"content": "pong", "redirected": false, "url": "https://192.168.88.29/ping", "status": 200, "x_content_type_options": "nosniff", "date": "Wed, 11 Aug 2021 19:54:57 GMT", "content_length": "4", "content_type": "text/plain; charset=utf-8", "connection": "close", "cookies_string": "", "cookies": {}, "msg": "OK (4 bytes)", "elapsed": 0, "changed": false, "invocation": {"module_args": {"url": "https://192.168.88.29/ping", "validate_certs": false, "return_content": true, "force": false, "http_agent": "ansible-httpget", "use_proxy": true, "force_basic_auth": false, "body_format": "raw", "method": "GET", "follow_redirects": "safe", "status_code": [200], "timeout": 30, "headers": {}, "follow": false, "url_username": null, "url_password": null, "client_cert": null, "client_key": null, "dest": null, "body": null, "src": null, "creates": null, "removes": null, "unix_socket": null, "mode": null, "owner": null, "group": null, "seuser": null, "serole": null, "selevel": null, "setype": null, "attributes": null, "content": null, "backup": null, "remote_src": null, "regexp": null, "delimiter": null, "directory_mode": null, "unsafe_writes": null}}}\r\n', b'Shared connection to 127.0.0.1 closed.\r\n')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'rm -f -r /home/leon/.ansible/tmp/ansible-tmp-1628711696.0183685-241503-93881099832458/ > /dev/null 2>&1 && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+ok: [localtest] => {
+    "attempts": 1,
+    "changed": false,
+    "connection": "close",
+    "content": "pong",
+    "content_length": "4",
+    "content_type": "text/plain; charset=utf-8",
+    "cookies": {},
+    "cookies_string": "",
+    "date": "Wed, 11 Aug 2021 19:54:57 GMT",
+    "elapsed": 0,
+    "invocation": {
+        "module_args": {
+            "attributes": null,
+            "backup": null,
+            "body": null,
+            "body_format": "raw",
+            "client_cert": null,
+            "client_key": null,
+            "content": null,
+            "creates": null,
+            "delimiter": null,
+            "dest": null,
+            "directory_mode": null,
+            "follow": false,
+            "follow_redirects": "safe",
+            "force": false,
+            "force_basic_auth": false,
+            "group": null,
+            "headers": {},
+            "http_agent": "ansible-httpget",
+            "method": "GET",
+            "mode": null,
+            "owner": null,
+            "regexp": null,
+            "remote_src": null,
+            "removes": null,
+            "return_content": true,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": null,
+            "status_code": [
+                200
+            ],
+            "timeout": 30,
+            "unix_socket": null,
+            "unsafe_writes": null,
+            "url": "https://192.168.88.29/ping",
+            "url_password": null,
+            "url_username": null,
+            "use_proxy": true,
+            "validate_certs": false
+        }
+    },
+    "msg": "OK (4 bytes)",
+    "redirected": false,
+    "status": 200,
+    "url": "https://192.168.88.29/ping",
+    "x_content_type_options": "nosniff"
+}
+
+TASK [run_rancher : Rancher get token] ******************************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/roles/run_rancher/tasks/main.yml:46
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'echo ~leon && sleep 0'"'"''
+<127.0.0.1> (0, b'/home/leon\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/leon/.ansible/tmp `"&& mkdir "` echo /home/leon/.ansible/tmp/ansible-tmp-1628711697.315569-241621-158651323149874 `" && echo ansible-tmp-1628711697.315569-241621-158651323149874="` echo /home/leon/.ansible/tmp/ansible-tmp-1628711697.315569-241621-158651323149874 `" ) && sleep 0'"'"''
+<127.0.0.1> (0, b'ansible-tmp-1628711697.315569-241621-158651323149874=/home/leon/.ansible/tmp/ansible-tmp-1628711697.315569-241621-158651323149874\n', b'')
+Using module file /usr/lib/python3.6/site-packages/ansible/modules/net_tools/basics/uri.py
+<127.0.0.1> PUT /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmpad64c41d TO /home/leon/.ansible/tmp/ansible-tmp-1628711697.315569-241621-158651323149874/AnsiballZ_uri.py
+<127.0.0.1> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 '[127.0.0.1]'
+<127.0.0.1> (0, b'sftp> put /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmpad64c41d /home/leon/.ansible/tmp/ansible-tmp-1628711697.315569-241621-158651323149874/AnsiballZ_uri.py\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'chmod u+x /home/leon/.ansible/tmp/ansible-tmp-1628711697.315569-241621-158651323149874/ /home/leon/.ansible/tmp/ansible-tmp-1628711697.315569-241621-158651323149874/AnsiballZ_uri.py && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 -tt 127.0.0.1 '/bin/sh -c '"'"'sudo -H -S -n  -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-hrkjzfnrsamnxokbgjlwibineguotldx ; /usr/libexec/platform-python /home/leon/.ansible/tmp/ansible-tmp-1628711697.315569-241621-158651323149874/AnsiballZ_uri.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<127.0.0.1> (1, b'\r\n{"content": "{\\"baseType\\":\\"error\\",\\"code\\":\\"Unauthorized\\",\\"message\\":\\"authentication failed\\",\\"status\\":401,\\"type\\":\\"error\\"}\\n", "redirected": false, "url": "https://192.168.88.29/v3-public/localProviders/local?action=login", "status": 401, "content_type": "application/json", "expires": "Wed 24 Feb 1982 18:42:00 GMT", "x_api_schemas": "https://192.168.88.29/v3-public/schemas", "x_content_type_options": "nosniff", "date": "Wed, 11 Aug 2021 19:54:58 GMT", "content_length": "105", "connection": "close", "msg": "Status code was 401 and not [201]: HTTP Error 401: Unauthorized", "elapsed": 0, "changed": false, "json": {"baseType": "error", "code": "Unauthorized", "message": "authentication failed", "status": 401, "type": "error"}, "failed": true, "invocation": {"module_args": {"url": "https://192.168.88.29/v3-public/localProviders/local?action=login", "method": "POST", "return_content": true, "validate_certs": false, "body_format": "json", "body": {"username": "admin", "password": "admin"}, "status_code": ["201"], "force": false, "http_agent": "ansible-httpget", "use_proxy": true, "force_basic_auth": false, "follow_redirects": "safe", "timeout": 30, "headers": {"Content-Type": "application/json"}, "follow": false, "url_username": null, "url_password": null, "client_cert": null, "client_key": null, "dest": null, "src": null, "creates": null, "removes": null, "unix_socket": null, "mode": null, "owner": null, "group": null, "seuser": null, "serole": null, "selevel": null, "setype": null, "attributes": null, "content": null, "backup": null, "remote_src": null, "regexp": null, "delimiter": null, "directory_mode": null, "unsafe_writes": null}}}\r\n', b'Shared connection to 127.0.0.1 closed.\r\n')
+<127.0.0.1> Failed to connect to the host via ssh: Shared connection to 127.0.0.1 closed.
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'rm -f -r /home/leon/.ansible/tmp/ansible-tmp-1628711697.315569-241621-158651323149874/ > /dev/null 2>&1 && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+fatal: [localtest]: FAILED! => {
+    "changed": false,
+    "connection": "close",
+    "content": "{\"baseType\":\"error\",\"code\":\"Unauthorized\",\"message\":\"authentication failed\",\"status\":401,\"type\":\"error\"}\n",
+    "content_length": "105",
+    "content_type": "application/json",
+    "date": "Wed, 11 Aug 2021 19:54:58 GMT",
+    "elapsed": 0,
+    "expires": "Wed 24 Feb 1982 18:42:00 GMT",
+    "invocation": {
+        "module_args": {
+            "attributes": null,
+            "backup": null,
+            "body": {
+                "password": "admin",
+                "username": "admin"
+            },
+            "body_format": "json",
+            "client_cert": null,
+            "client_key": null,
+            "content": null,
+            "creates": null,
+            "delimiter": null,
+            "dest": null,
+            "directory_mode": null,
+            "follow": false,
+            "follow_redirects": "safe",
+            "force": false,
+            "force_basic_auth": false,
+            "group": null,
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "http_agent": "ansible-httpget",
+            "method": "POST",
+            "mode": null,
+            "owner": null,
+            "regexp": null,
+            "remote_src": null,
+            "removes": null,
+            "return_content": true,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": null,
+            "status_code": [
+                "201"
+            ],
+            "timeout": 30,
+            "unix_socket": null,
+            "unsafe_writes": null,
+            "url": "https://192.168.88.29/v3-public/localProviders/local?action=login",
+            "url_password": null,
+            "url_username": null,
+            "use_proxy": true,
+            "validate_certs": false
+        }
+    },
+    "json": {
+        "baseType": "error",
+        "code": "Unauthorized",
+        "message": "authentication failed",
+        "status": 401,
+        "type": "error"
+    },
+    "msg": "Status code was 401 and not [201]: HTTP Error 401: Unauthorized",
+    "redirected": false,
+    "status": 401,
+    "url": "https://192.168.88.29/v3-public/localProviders/local?action=login",
+    "x_api_schemas": "https://192.168.88.29/v3-public/schemas",
+    "x_content_type_options": "nosniff"
+}
+...ignoring
+
+TASK [run_rancher : debug] ******************************************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/roles/run_rancher/tasks/main.yml:60
+ok: [localtest] => {
+    "msg": "LOGIN= {'content': '{\"baseType\":\"error\",\"code\":\"Unauthorized\",\"message\":\"authentication failed\",\"status\":401,\"type\":\"error\"}\\n', 'redirected': False, 'url': 'https://192.168.88.29/v3-public/localProviders/local?action=login', 'status': 401, 'content_type': 'application/json', 'expires': 'Wed 24 Feb 1982 18:42:00 GMT', 'x_api_schemas': 'https://192.168.88.29/v3-public/schemas', 'x_content_type_options': 'nosniff', 'date': 'Wed, 11 Aug 2021 19:54:58 GMT', 'content_length': '105', 'connection': 'close', 'msg': 'Status code was 401 and not [201]: HTTP Error 401: Unauthorized', 'elapsed': 0, 'changed': False, 'json': {'baseType': 'error', 'code': 'Unauthorized', 'message': 'authentication failed', 'status': 401, 'type': 'error'}, 'failed': True}"
+}
+
+TASK [run_rancher : Rancher get token] ******************************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/roles/run_rancher/tasks/main.yml:66
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'echo ~leon && sleep 0'"'"''
+<127.0.0.1> (0, b'/home/leon\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/leon/.ansible/tmp `"&& mkdir "` echo /home/leon/.ansible/tmp/ansible-tmp-1628711698.4575841-241765-115985698400237 `" && echo ansible-tmp-1628711698.4575841-241765-115985698400237="` echo /home/leon/.ansible/tmp/ansible-tmp-1628711698.4575841-241765-115985698400237 `" ) && sleep 0'"'"''
+<127.0.0.1> (0, b'ansible-tmp-1628711698.4575841-241765-115985698400237=/home/leon/.ansible/tmp/ansible-tmp-1628711698.4575841-241765-115985698400237\n', b'')
+Using module file /usr/lib/python3.6/site-packages/ansible/modules/net_tools/basics/uri.py
+<127.0.0.1> PUT /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmpiwfnjyzb TO /home/leon/.ansible/tmp/ansible-tmp-1628711698.4575841-241765-115985698400237/AnsiballZ_uri.py
+<127.0.0.1> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 '[127.0.0.1]'
+<127.0.0.1> (0, b'sftp> put /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmpiwfnjyzb /home/leon/.ansible/tmp/ansible-tmp-1628711698.4575841-241765-115985698400237/AnsiballZ_uri.py\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'chmod u+x /home/leon/.ansible/tmp/ansible-tmp-1628711698.4575841-241765-115985698400237/ /home/leon/.ansible/tmp/ansible-tmp-1628711698.4575841-241765-115985698400237/AnsiballZ_uri.py && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 -tt 127.0.0.1 '/bin/sh -c '"'"'sudo -H -S -n  -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-ianqlrvlpgntgwnsadyupnkfnunwbssv ; /usr/libexec/platform-python /home/leon/.ansible/tmp/ansible-tmp-1628711698.4575841-241765-115985698400237/AnsiballZ_uri.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<127.0.0.1> (0, b'\r\n{"content": "{\\"authProvider\\":\\"local\\",\\"baseType\\":\\"token\\",\\"clusterId\\":null,\\"created\\":\\"2021-08-11T19:54:59Z\\",\\"createdTS\\":1628711699000,\\"creatorId\\":null,\\"current\\":false,\\"description\\":\\"\\",\\"enabled\\":true,\\"expired\\":false,\\"expiresAt\\":\\"\\",\\"groupPrincipals\\":null,\\"id\\":\\"token-x9bxr\\",\\"isDerived\\":false,\\"labels\\":{\\"authn.management.cattle.io/kind\\":\\"session\\",\\"authn.management.cattle.io/token-userId\\":\\"user-s796l\\",\\"cattle.io/creator\\":\\"norman\\"},\\"lastUpdateTime\\":\\"\\",\\"links\\":{\\"self\\":\\"https://192.168.88.29/v3-public/tokens/token-x9bxr\\"},\\"name\\":\\"token-x9bxr\\",\\"token\\":\\"token-x9bxr:vs957v5hrwcfw59xljn888m6cm9bmplvtmr4v64fd6bchqk6zsqbvp\\",\\"ttl\\":57600000,\\"type\\":\\"token\\",\\"userId\\":\\"user-s796l\\",\\"userPrincipal\\":\\"map[displayName:Default Admin loginName:admin me:true metadata:map[creationTimestamp:\\\\u003cnil\\\\u003e name:local://user-s796l] principalType:user provider:local]\\",\\"uuid\\":\\"66d62ff2-e838-4a4e-856e-708104efee49\\"}\\n", "redirected": false, "url": "https://192.168.88.29/v3-public/localProviders/local?action=login", "status": 201, "content_type": "application/json", "expires": "Wed 24 Feb 1982 18:42:00 GMT", "x_api_schemas": "https://192.168.88.29/v3-public/schemas", "x_content_type_options": "nosniff", "date": "Wed, 11 Aug 2021 19:54:59 GMT", "content_length": "880", "connection": "close", "cookies_string": "", "cookies": {}, "msg": "OK (880 bytes)", "elapsed": 0, "changed": false, "json": {"authProvider": "local", "baseType": "token", "clusterId": null, "created": "2021-08-11T19:54:59Z", "createdTS": 1628711699000, "creatorId": null, "current": false, "description": "", "enabled": true, "expired": false, "expiresAt": "", "groupPrincipals": null, "id": "token-x9bxr", "isDerived": false, "labels": {"authn.management.cattle.io/kind": "session", "authn.management.cattle.io/token-userId": "user-s796l", "cattle.io/creator": "norman"}, "lastUpdateTime": "", "links": {"self": "https://192.168.88.29/v3-public/tokens/token-x9bxr"}, "name": "token-x9bxr", "token": "token-x9bxr:vs957v5hrwcfw59xljn888m6cm9bmplvtmr4v64fd6bchqk6zsqbvp", "ttl": 57600000, "type": "token", "userId": "user-s796l", "userPrincipal": "map[displayName:Default Admin loginName:admin me:true metadata:map[creationTimestamp:<nil> name:local://user-s796l] principalType:user provider:local]", "uuid": "66d62ff2-e838-4a4e-856e-708104efee49"}, "invocation": {"module_args": {"url": "https://192.168.88.29/v3-public/localProviders/local?action=login", "method": "POST", "return_content": true, "validate_certs": false, "body_format": "json", "body": {"username": "admin", "password": "secret"}, "status_code": ["201"], "force": false, "http_agent": "ansible-httpget", "use_proxy": true, "force_basic_auth": false, "follow_redirects": "safe", "timeout": 30, "headers": {"Content-Type": "application/json"}, "follow": false, "url_username": null, "url_password": null, "client_cert": null, "client_key": null, "dest": null, "src": null, "creates": null, "removes": null, "unix_socket": null, "mode": null, "owner": null, "group": null, "seuser": null, "serole": null, "selevel": null, "setype": null, "attributes": null, "content": null, "backup": null, "remote_src": null, "regexp": null, "delimiter": null, "directory_mode": null, "unsafe_writes": null}}}\r\n', b'Shared connection to 127.0.0.1 closed.\r\n')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'rm -f -r /home/leon/.ansible/tmp/ansible-tmp-1628711698.4575841-241765-115985698400237/ > /dev/null 2>&1 && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+ok: [localtest] => {
+    "changed": false,
+    "connection": "close",
+    "content": "{\"authProvider\":\"local\",\"baseType\":\"token\",\"clusterId\":null,\"created\":\"2021-08-11T19:54:59Z\",\"createdTS\":1628711699000,\"creatorId\":null,\"current\":false,\"description\":\"\",\"enabled\":true,\"expired\":false,\"expiresAt\":\"\",\"groupPrincipals\":null,\"id\":\"token-x9bxr\",\"isDerived\":false,\"labels\":{\"authn.management.cattle.io/kind\":\"session\",\"authn.management.cattle.io/token-userId\":\"user-s796l\",\"cattle.io/creator\":\"norman\"},\"lastUpdateTime\":\"\",\"links\":{\"self\":\"https://192.168.88.29/v3-public/tokens/token-x9bxr\"},\"name\":\"token-x9bxr\",\"token\":\"token-x9bxr:vs957v5hrwcfw59xljn888m6cm9bmplvtmr4v64fd6bchqk6zsqbvp\",\"ttl\":57600000,\"type\":\"token\",\"userId\":\"user-s796l\",\"userPrincipal\":\"map[displayName:Default Admin loginName:admin me:true metadata:map[creationTimestamp:\\u003cnil\\u003e name:local://user-s796l] principalType:user provider:local]\",\"uuid\":\"66d62ff2-e838-4a4e-856e-708104efee49\"}\n",
+    "content_length": "880",
+    "content_type": "application/json",
+    "cookies": {},
+    "cookies_string": "",
+    "date": "Wed, 11 Aug 2021 19:54:59 GMT",
+    "elapsed": 0,
+    "expires": "Wed 24 Feb 1982 18:42:00 GMT",
+    "invocation": {
+        "module_args": {
+            "attributes": null,
+            "backup": null,
+            "body": {
+                "password": "secret",
+                "username": "admin"
+            },
+            "body_format": "json",
+            "client_cert": null,
+            "client_key": null,
+            "content": null,
+            "creates": null,
+            "delimiter": null,
+            "dest": null,
+            "directory_mode": null,
+            "follow": false,
+            "follow_redirects": "safe",
+            "force": false,
+            "force_basic_auth": false,
+            "group": null,
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "http_agent": "ansible-httpget",
+            "method": "POST",
+            "mode": null,
+            "owner": null,
+            "regexp": null,
+            "remote_src": null,
+            "removes": null,
+            "return_content": true,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": null,
+            "status_code": [
+                "201"
+            ],
+            "timeout": 30,
+            "unix_socket": null,
+            "unsafe_writes": null,
+            "url": "https://192.168.88.29/v3-public/localProviders/local?action=login",
+            "url_password": null,
+            "url_username": null,
+            "use_proxy": true,
+            "validate_certs": false
+        }
+    },
+    "json": {
+        "authProvider": "local",
+        "baseType": "token",
+        "clusterId": null,
+        "created": "2021-08-11T19:54:59Z",
+        "createdTS": 1628711699000,
+        "creatorId": null,
+        "current": false,
+        "description": "",
+        "enabled": true,
+        "expired": false,
+        "expiresAt": "",
+        "groupPrincipals": null,
+        "id": "token-x9bxr",
+        "isDerived": false,
+        "labels": {
+            "authn.management.cattle.io/kind": "session",
+            "authn.management.cattle.io/token-userId": "user-s796l",
+            "cattle.io/creator": "norman"
+        },
+        "lastUpdateTime": "",
+        "links": {
+            "self": "https://192.168.88.29/v3-public/tokens/token-x9bxr"
+        },
+        "name": "token-x9bxr",
+        "token": "token-x9bxr:vs957v5hrwcfw59xljn888m6cm9bmplvtmr4v64fd6bchqk6zsqbvp",
+        "ttl": 57600000,
+        "type": "token",
+        "userId": "user-s796l",
+        "userPrincipal": "map[displayName:Default Admin loginName:admin me:true metadata:map[creationTimestamp:<nil> name:local://user-s796l] principalType:user provider:local]",
+        "uuid": "66d62ff2-e838-4a4e-856e-708104efee49"
+    },
+    "msg": "OK (880 bytes)",
+    "redirected": false,
+    "status": 201,
+    "url": "https://192.168.88.29/v3-public/localProviders/local?action=login",
+    "x_api_schemas": "https://192.168.88.29/v3-public/schemas",
+    "x_content_type_options": "nosniff"
+}
+
+TASK [run_rancher : Setting host facts using complex arguments] *****************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/roles/run_rancher/tasks/main.yml:79
+ok: [localtest] => {
+    "ansible_facts": {
+        "rancher_token": "token-x9bxr:vs957v5hrwcfw59xljn888m6cm9bmplvtmr4v64fd6bchqk6zsqbvp"
+    },
+    "changed": false
+}
+
+TASK [run_rancher : Rancher get token] ******************************************************************************************************************************************************
+task path: /home/leon/ansible/lesson5/roles/run_rancher/tasks/main.yml:86
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'echo ~leon && sleep 0'"'"''
+<127.0.0.1> (0, b'/home/leon\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/leon/.ansible/tmp `"&& mkdir "` echo /home/leon/.ansible/tmp/ansible-tmp-1628711699.4030058-241884-257781265389416 `" && echo ansible-tmp-1628711699.4030058-241884-257781265389416="` echo /home/leon/.ansible/tmp/ansible-tmp-1628711699.4030058-241884-257781265389416 `" ) && sleep 0'"'"''
+<127.0.0.1> (0, b'ansible-tmp-1628711699.4030058-241884-257781265389416=/home/leon/.ansible/tmp/ansible-tmp-1628711699.4030058-241884-257781265389416\n', b'')
+Using module file /usr/lib/python3.6/site-packages/ansible/modules/net_tools/basics/uri.py
+<127.0.0.1> PUT /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmpqeeuadsh TO /home/leon/.ansible/tmp/ansible-tmp-1628711699.4030058-241884-257781265389416/AnsiballZ_uri.py
+<127.0.0.1> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 '[127.0.0.1]'
+<127.0.0.1> (0, b'sftp> put /home/leon/.ansible/tmp/ansible-local-240902qxx8efbg/tmpqeeuadsh /home/leon/.ansible/tmp/ansible-tmp-1628711699.4030058-241884-257781265389416/AnsiballZ_uri.py\n', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'chmod u+x /home/leon/.ansible/tmp/ansible-tmp-1628711699.4030058-241884-257781265389416/ /home/leon/.ansible/tmp/ansible-tmp-1628711699.4030058-241884-257781265389416/AnsiballZ_uri.py && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 -tt 127.0.0.1 '/bin/sh -c '"'"'sudo -H -S -n  -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-iuwiqarqpqhvzrsagwyamnucscxfqaeu ; /usr/libexec/platform-python /home/leon/.ansible/tmp/ansible-tmp-1628711699.4030058-241884-257781265389416/AnsiballZ_uri.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<127.0.0.1> (1, b'\r\n{"content": "{\\"baseType\\":\\"error\\",\\"code\\":\\"InvalidBodyContent\\",\\"message\\":\\"invalid current password\\",\\"status\\":422,\\"type\\":\\"error\\"}\\n", "redirected": false, "url": "https://192.168.88.29/v3/users?action=changepassword", "status": 422, "content_type": "application/json", "expires": "Wed 24 Feb 1982 18:42:00 GMT", "x_api_schemas": "https://192.168.88.29/v3/schemas", "x_content_type_options": "nosniff", "date": "Wed, 11 Aug 2021 19:54:59 GMT", "content_length": "114", "connection": "close", "msg": "Status code was 422 and not [200]: HTTP Error 422: Unprocessable Entity", "elapsed": 0, "changed": false, "json": {"baseType": "error", "code": "InvalidBodyContent", "message": "invalid current password", "status": 422, "type": "error"}, "failed": true, "invocation": {"module_args": {"url": "https://192.168.88.29/v3/users?action=changepassword", "method": "POST", "return_content": true, "validate_certs": false, "body_format": "json", "headers": {"Content-Type": "application/json", "Authorization": "Bearer token-x9bxr:vs957v5hrwcfw59xljn888m6cm9bmplvtmr4v64fd6bchqk6zsqbvp"}, "body": {"currentPassword": "admin", "newPassword": "secret"}, "status_code": ["200"], "force": false, "http_agent": "ansible-httpget", "use_proxy": true, "force_basic_auth": false, "follow_redirects": "safe", "timeout": 30, "follow": false, "url_username": null, "url_password": null, "client_cert": null, "client_key": null, "dest": null, "src": null, "creates": null, "removes": null, "unix_socket": null, "mode": null, "owner": null, "group": null, "seuser": null, "serole": null, "selevel": null, "setype": null, "attributes": null, "content": null, "backup": null, "remote_src": null, "regexp": null, "delimiter": null, "directory_mode": null, "unsafe_writes": null}}}\r\n', b'Shared connection to 127.0.0.1 closed.\r\n')
+<127.0.0.1> Failed to connect to the host via ssh: Shared connection to 127.0.0.1 closed.
+<127.0.0.1> ESTABLISH SSH CONNECTION FOR USER: leon
+<127.0.0.1> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="leon"' -o ConnectTimeout=10 -o ControlPath=/home/leon/.ansible/cp/a3c5c58172 127.0.0.1 '/bin/sh -c '"'"'rm -f -r /home/leon/.ansible/tmp/ansible-tmp-1628711699.4030058-241884-257781265389416/ > /dev/null 2>&1 && sleep 0'"'"''
+<127.0.0.1> (0, b'', b'')
+fatal: [localtest]: FAILED! => {
+    "changed": false,
+    "connection": "close",
+    "content": "{\"baseType\":\"error\",\"code\":\"InvalidBodyContent\",\"message\":\"invalid current password\",\"status\":422,\"type\":\"error\"}\n",
+    "content_length": "114",
+    "content_type": "application/json",
+    "date": "Wed, 11 Aug 2021 19:54:59 GMT",
+    "elapsed": 0,
+    "expires": "Wed 24 Feb 1982 18:42:00 GMT",
+    "invocation": {
+        "module_args": {
+            "attributes": null,
+            "backup": null,
+            "body": {
+                "currentPassword": "admin",
+                "newPassword": "secret"
+            },
+            "body_format": "json",
+            "client_cert": null,
+            "client_key": null,
+            "content": null,
+            "creates": null,
+            "delimiter": null,
+            "dest": null,
+            "directory_mode": null,
+            "follow": false,
+            "follow_redirects": "safe",
+            "force": false,
+            "force_basic_auth": false,
+            "group": null,
+            "headers": {
+                "Authorization": "Bearer token-x9bxr:vs957v5hrwcfw59xljn888m6cm9bmplvtmr4v64fd6bchqk6zsqbvp",
+                "Content-Type": "application/json"
+            },
+            "http_agent": "ansible-httpget",
+            "method": "POST",
+            "mode": null,
+            "owner": null,
+            "regexp": null,
+            "remote_src": null,
+            "removes": null,
+            "return_content": true,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": null,
+            "status_code": [
+                "200"
+            ],
+            "timeout": 30,
+            "unix_socket": null,
+            "unsafe_writes": null,
+            "url": "https://192.168.88.29/v3/users?action=changepassword",
+            "url_password": null,
+            "url_username": null,
+            "use_proxy": true,
+            "validate_certs": false
+        }
+    },
+    "json": {
+        "baseType": "error",
+        "code": "InvalidBodyContent",
+        "message": "invalid current password",
+        "status": 422,
+        "type": "error"
+    },
+    "msg": "Status code was 422 and not [200]: HTTP Error 422: Unprocessable Entity",
+    "redirected": false,
+    "status": 422,
+    "url": "https://192.168.88.29/v3/users?action=changepassword",
+    "x_api_schemas": "https://192.168.88.29/v3/schemas",
+    "x_content_type_options": "nosniff"
+}
+
+PLAY RECAP **********************************************************************************************************************************************************************************
+localtest                  : ok=11   changed=1    unreachable=0    failed=1    skipped=4    rescued=0    ignored=1   
+

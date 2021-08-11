@@ -1,0 +1,46 @@
+{
+"ldapConfig":{
+"actionLinks":{
+"testAndApply":"https://{{ rancher_server_ip }}/v3/openLdapConfigs/openldap?action=testAndApply"
+},
+"baseType":"authConfig",
+"connectionTimeout":5000,
+"enabled":true,
+"groupDNAttribute":"entryDN",
+"groupMemberMappingAttribute":"member",
+"groupMemberUserAttribute":"entryDN",
+"groupNameAttribute":"cn",
+"groupObjectClass":"groupOfNames",
+"groupSearchAttribute":"cn",
+"id":"openldap",
+"labels":{
+"cattle.io/creator":"norman"
+},
+"links":{
+"self":"https://{{ rancher_server_ip }}/v3/openLdapConfigs/openldap",
+"update":"https://{{ rancher_server_ip }}/v3/openLdapConfigs/openldap"
+},
+"name":"openldap",
+"nestedGroupMembershipEnabled":false,
+"port":{{ hostvars[inventory_hostname]['global_openldap_server_port'] }},
+"starttls":false,
+"tls":false,
+"type":"openLdapConfig",
+"userDisabledBitMask":0,
+"userLoginAttribute":"uid",
+"userMemberAttribute":"memberOf",
+"userNameAttribute":"cn",
+"userObjectClass":"inetOrgPerson",
+"userSearchAttribute":"uid|sn|givenName",
+"servers":[
+"{{ rancher_server_ip }}"
+],
+"serviceAccountDistinguishedName":"cn={{ hostvars[inventory_hostname]['global_openldap_rancher_admin_username'] }},ou=users,{{ hostvars[inventory_hostname]['global_openldap_root'] }}",
+"serviceAccountPassword":"{{ hostvars[inventory_hostname]['global_openldap_rancher_admin_password'] }}",
+"userSearchBase":"ou=users,{{ hostvars[inventory_hostname]['global_openldap_root'] }}",
+"accessMode":"unrestricted"
+},
+"enabled":true,
+"username":"{{ hostvars[inventory_hostname]['global_openldap_rancher_admin_username'] }}",
+"password":"{{ hostvars[inventory_hostname]['global_openldap_rancher_admin_password'] }}"
+}

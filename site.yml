@@ -1,6 +1,22 @@
 ---
 - hosts: localtest
+  vars:
+    tested: "yes"
+    host_ip: " {{hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }} "
+  pre_tasks:
+    - set_fact:
+        global_openldap_rancher_admin_username: "-"
+        global_openldap_root: "-"
+        global_openldap_rancher_admin_password: "-"
+        global_openldap_server_port: "-"
   tasks:
+    - name: Show info
+      debug:
+        msg: "Host ip=[{{host_ip}}]"
     - name: Run OpenLDAP
       include_role:
         name: run_openldap
+
+    - name: Run Rancher
+      include_role:
+        name: run_rancher

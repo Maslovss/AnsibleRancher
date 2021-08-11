@@ -1,0 +1,7 @@
+{
+  "dockerRootDir": "/var/lib/docker",
+  "driver": "k3s",
+  "enableNetworkPolicy": false,
+  "type": "cluster",
+  "name": "newcluster"
+}

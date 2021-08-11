@@ -1,10 +1,16 @@
 ---
+- name: Set global variables from OpenLDAP role
+  set_fact:
+    global_openldap_rancher_admin_username: "{{ openldap_rancher_admin_username }}"
+    global_openldap_root: "{{ openldap_root }}"
+    global_openldap_rancher_admin_password: "{{ openldap_rancher_admin_password }}"
+    global_openldap_server_port: "{{ openldap_server_port }}"
+
 - name: Start OpenLDAP container
   docker_container:
     name: "{{ openldap_container_name }}"
     image: "{{ openldap_docker_image }}"
     state: started
-    recreate: yes
     ports:
       - "{{ openldap_server_port }}:{{ openldap_container_port }}"
     env:
