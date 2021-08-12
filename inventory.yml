@@ -1,5 +1,16 @@
 all:
   hosts:
-    localtest:
+    localhost:
       ansible_host: 127.0.0.1
       ansible_user: leon
+    aws-web:
+      ansible_host: 18.184.81.215
+      ansible_user: ubuntu
+
+locals:
+  hosts:
+    localhost:
+
+aws:
+  hosts:
+    aws-web:

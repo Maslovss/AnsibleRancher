@@ -1,5 +1,5 @@
 ---
-- hosts: localtest
+- hosts: localhost
   vars:
     # Все что нам надо на входе плейбука
     # Если какие-то переменные не определены, то будут браться из ролей в defaults
@@ -13,10 +13,10 @@
     g_openldap_other_users_passwords: "pwd01,pwd02,pwd03,pwd04"
 
     g_openldap_server_port: 1389
-    g_openldap_root: "dc=example,dc=org"
+    g_openldap_root: "dc=windowsmustdie,dc=org"
 
     # openldap_docker_image: "bitnami/openldap:2.4"
-    # rancher_docker_image: "rancher/rancher:latest"
+    rancher_docker_image: "rancher/rancher:stable"
 
   tasks:
     - name: Check os type. Working with RedHat, CentOS, Ubuntu
