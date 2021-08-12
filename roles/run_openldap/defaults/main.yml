@@ -11,8 +11,8 @@ openldap_admin_password: "secret"
 openldap_rancher_admin_username: "root"
 openldap_rancher_admin_password: "wheel"
 
-openldap_users_username: "{{ openldap_rancher_admin_username }},user01,user02"
-openldap_users_password: "{{ openldap_rancher_admin_password }},password1,password2"
+openldap_other_users_usernames: "user01,user02"
+openldap_other_users_passwords: "password1,password2"
 
 #Ports for NON TLS
 openldap_container_port: "1389"

@@ -1,0 +1,207 @@
+---
+- pause:
+    minutes: 1
+
+- name: Check server up via web ping pong request
+  uri:
+    url: "https://{{ rancher_server_ip }}/ping"
+    validate_certs: no
+    return_content: yes
+  register: ping_answer
+  until: ping_answer.content == "pong"
+  retries: 30
+  delay: 20
+
+- pause:
+    minutes: 1
+
+- name: Rancher login with default password
+  uri:
+    url: "https://{{ rancher_server_ip }}/v3-public/localProviders/local?action=login"
+    method: POST
+    return_content: yes
+    validate_certs: no
+    body_format: json
+    body:
+      username: "{{ rancher_default_username }}"
+      password: "{{ rancher_default_password }}"
+    status_code: 201, 401
+  register: login_first
+  until: login_first.status == 201 or login_first.status == 401
+  retries: 30
+  delay: 20
+
+- name: Default login ok, setting token
+  set_fact:
+    rancher_token: "{{ login_first.json['token']  }}"
+  when: login_first.status == 201
+
+- name: Default login error
+  debug:
+    msg: "Cant login with default password"
+  when: login_first.status == 401
+
+- name: DEBUG token
+  debug:
+    msg: "TOKEN is [{{ rancher_token }} ], login_first.status =[ {{ login_first.status }} ]"
+    verbosity: 2
+
+- name: Rancher try login with new password
+  uri:
+    url: "https://{{ rancher_server_ip }}/v3-public/localProviders/local?action=login"
+    method: POST
+    return_content: yes
+    validate_certs: no
+    body_format: json
+    body:
+      username: "{{ rancher_default_username }}"
+      password: "{{ rancher_new_password }}"
+    status_code: 201
+  register: login
+  when: login_first.status | int  == 401
+
+- name: New password login ok, setting token
+  set_fact:
+    rancher_token: "{{ login.json['token']  }}"
+  when: login_first.status | int == 401
+
+- name: DEBUG token
+  debug:
+    msg: "TOKEN is [{{ rancher_token }} ] ]"
+    verbosity: 2
+
+# - name: Stop
+#   fail:
+#     msg: "Enough for today"
+
+## Change password
+#curl -s 'https://127.0.0.1/v3/users?action=changepassword' -H 'content-type: application/json' -H "Authorization: Bearer $LOGINTOKEN" --data-binary '{"currentPassword":"admin","newPassword":"thisisyournewpassword"}' --insecure
+
+- name: Rancher change password if default login was ok
+  uri:
+    url: "https://{{ rancher_server_ip }}/v3/users?action=changepassword"
+    method: POST
+    return_content: yes
+    validate_certs: no
+    body_format: json
+    headers:
+      Content-Type: application/json
+      Authorization: Bearer {{ rancher_token }}
+    body:
+      currentPassword: "{{ rancher_default_password }}"
+      newPassword: "{{ rancher_new_password }}"
+    status_code: 200
+  register: result
+  when: login_first.status == 201
+
+# Create API key
+#APIRESPONSE=`curl -s 'https://127.0.0.1/v3/token' -H 'content-type: application/json' -H "Authorization: Bearer $LOGINTOKEN" --data-binary '{"type":"token","description":"automation"}' --insecure`
+- name: debug
+  debug:
+    msg: "TOKEN = {{ rancher_token }}"
+    verbosity: 2
+
+- name: Rancher create api key
+  uri:
+    url: "https://{{ rancher_server_ip }}/v3/token"
+    method: POST
+    return_content: yes
+    validate_certs: no
+    body_format: json
+    headers:
+      Content-Type: application/json
+      Authorization: Bearer {{ rancher_token }}
+    body:
+      type: "token"
+      description: "automation"
+    status_code: 201
+  register: result
+
+- name: Setting rancher_api_key variable
+  set_fact:
+    rancher_api_key: "{{ result.json['token']  }}"
+
+# Set server-url
+#RANCHER_SERVER=https://your_rancher_server.com
+#curl -s 'https://127.0.0.1/v3/settings/server-url' -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" -X PUT --data-binary '{"name":"server-url","value":"'$RANCHER_SERVER'"}' --insecure > /dev/null
+
+- name: Rancher set server URL
+  uri:
+    url: "https://{{ rancher_server_ip }}/v3/settings/server-url"
+    method: PUT
+    return_content: yes
+    validate_certs: no
+    body_format: json
+    headers:
+      Content-Type: application/json
+      Authorization: Bearer {{ rancher_api_key }}
+    body:
+      name: "server-url"
+      value: "https://{{ rancher_server_ip }}"
+    status_code: 200
+  register: result
+
+# # Create cluster
+# CLUSTERRESPONSE=`curl -s 'https://127.0.0.1/v3/cluster' -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" --data-binary '{"dockerRootDir":"/var/lib/docker","enableNetworkPolicy":false,"type":"cluster","rancherKubernetesEngineConfig":{"addonJobTimeout":30,"ignoreDockerVersion":true,"sshAgentAuth":false,"type":"rancherKubernetesEngineConfig","authentication":{"type":"authnConfig","strategy":"x509"},"network":{"type":"networkConfig","plugin":"canal"},"ingress":{"type":"ingressConfig","provider":"nginx"},"monitoring":{"type":"monitoringConfig","provider":"metrics-server"},"services":{"type":"rkeConfigServices","kubeApi":{"podSecurityPolicy":false,"type":"kubeAPIService"},"etcd":{"snapshot":false,"type":"etcdService","extraArgs":{"heartbeat-interval":500,"election-timeout":5000}}}},"name":"yournewcluster"}' --insecure`
+# # Extract clusterid to use for generating the docker run command
+# CLUSTERID=`echo $CLUSTERRESPONSE | jq -r .id`
+
+# - name: Rancher create cluster
+#   uri:
+#     url: "https://{{ rancher_server_ip }}/v3/cluster"
+#     method: POST
+#     return_content: yes
+#     validate_certs: no
+#     headers:
+#       Content-Type: application/json
+#       Authorization: Bearer {{ rancher_api_key }}
+#     body: "{{ lookup('file','cluster.json') }}"
+#     body_format: json
+#     status_code: 201
+#   register: result
+
+- name: Set vars for j2
+  set_fact:
+    j2_openldap_server_port: "{{ g_openldap_server_port }}"
+    j2_openldap_rancher_admin_username: "{{ g_openldap_rancher_admin_username }}"
+    j2_openldap_rancher_admin_password: "{{ g_openldap_rancher_admin_password }}"
+    j2_openldap_root: "{{ g_openldap_root }}"
+
+- name: debug pring json
+  debug:
+    msg: "{{ lookup('template', 'openldap.json.j2') }}"
+    verbosity: 2
+
+- name: Rancher activate OpenLDAP
+  uri:
+    url: "https://{{ rancher_server_ip }}/v3/openLdapConfigs/openldap?action=testAndApply"
+    method: POST
+    return_content: yes
+    validate_certs: no
+    body_format: json
+    headers:
+      Content-Type: application/json
+      Authorization: Bearer {{ rancher_api_key }}
+    body: "{{ lookup('template', 'openldap.json.j2') }}"
+    status_code: 200
+  register: result
+
+- name: Rancher try login via OpenLDAP"
+  uri:
+    url: "https://{{ rancher_server_ip }}/v3-public/openLdapProviders/openldap?action=login"
+    method: POST
+    return_content: yes
+    validate_certs: no
+    body_format: json
+    body:
+      username: "{{ g_openldap_rancher_admin_username }}"
+      password: "{{ g_openldap_rancher_admin_password }}"
+    status_code: 201
+  register: login
+
+- name: Login ok with via OpenLDAP auth provider
+  debug:
+    msg:
+      - "Login via openLdapProviders/openldap, username = [ {{ g_openldap_rancher_admin_username }}] , password = [ {{ g_openldap_rancher_admin_password }}]"
+      - "Login OK, server response=[{{ login.json['userPrincipal'] }}]"
+  when: login.status == 201

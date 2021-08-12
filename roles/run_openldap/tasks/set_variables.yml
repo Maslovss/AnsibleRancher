@@ -1,0 +1,31 @@
+---
+#Если переменные не определены в playbooke, из которого они вызываются,
+# то устанавливаем их здесь, так как эти переменные используются разными ролями
+# ( в роли Ранчера при настройке LDAP надо знать порты, root, имя пользователя и пароль )
+
+- name: OpenLDAP set default admin username and password
+  set_fact:
+    g_openldap_rancher_admin_username: openldap_rancher_admin_username
+    g_openldap_rancher_admin_password: openldap_rancher_admin_password
+  when: g_openldap_rancher_admin_username is not defined or g_openldap_rancher_admin_password is not defined
+
+- name: OpenLDAP set default other users and passwords
+  set_fact:
+    g_openldap_other_users_usernames: openldap_other_users_usernames
+    g_openldap_other_users_passwords: openldap_other_users_passwords
+  when: g_openldap_other_users_usernames is not defined or g_openldap_other_users_passwords is not defined
+
+- name: OpenLDAP set default root
+  set_fact:
+    g_openldap_root: openldap_root
+  when: g_openldap_root is not defined
+
+- name: OpenLDAP set default port
+  set_fact:
+    g_openldap_server_port: openldap_server_port
+  when: g_openldap_server_port is not defined
+
+- name: Set variables from OpenLDAP role
+  set_fact:
+    openldap_users_username: "{{ g_openldap_rancher_admin_username }},{{ g_openldap_other_users_usernames }}"
+    openldap_users_password: "{{ g_openldap_rancher_admin_password }},{{ g_openldap_other_users_passwords }}"

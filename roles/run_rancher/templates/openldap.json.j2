@@ -22,7 +22,7 @@
 },
 "name":"openldap",
 "nestedGroupMembershipEnabled":false,
-"port":{{ hostvars[inventory_hostname]['global_openldap_server_port'] }},
+"port":{{ j2_openldap_server_port }},
 "starttls":false,
 "tls":false,
 "type":"openLdapConfig",
@@ -35,12 +35,12 @@
 "servers":[
 "{{ rancher_server_ip }}"
 ],
-"serviceAccountDistinguishedName":"cn={{ hostvars[inventory_hostname]['global_openldap_rancher_admin_username'] }},ou=users,{{ hostvars[inventory_hostname]['global_openldap_root'] }}",
-"serviceAccountPassword":"{{ hostvars[inventory_hostname]['global_openldap_rancher_admin_password'] }}",
-"userSearchBase":"ou=users,{{ hostvars[inventory_hostname]['global_openldap_root'] }}",
+"serviceAccountDistinguishedName":"cn={{ j2_openldap_rancher_admin_username }},ou=users,{{ j2_openldap_root }}",
+"serviceAccountPassword":"{{ j2_openldap_rancher_admin_password }}",
+"userSearchBase":"ou=users,{{ j2_openldap_root }}",
 "accessMode":"unrestricted"
 },
 "enabled":true,
-"username":"{{ hostvars[inventory_hostname]['global_openldap_rancher_admin_username'] }}",
-"password":"{{ hostvars[inventory_hostname]['global_openldap_rancher_admin_password'] }}"
+"username":"{{ j2_openldap_rancher_admin_username }}",
+"password":"{{ j2_openldap_rancher_admin_password }}"
 }

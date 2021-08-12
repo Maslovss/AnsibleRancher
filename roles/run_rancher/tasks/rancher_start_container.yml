@@ -1,0 +1,11 @@
+---
+- name: Start Rancher container
+  docker_container:
+    name: "{{ rancher_container_name }}"
+    image: "{{ rancher_docker_image }}"
+    detach: yes
+    privileged: yes
+    restart_policy: always
+    ports:
+      - "80:80"
+      - "443:443"

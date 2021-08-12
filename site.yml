@@ -1,18 +1,38 @@
 ---
 - hosts: localtest
   vars:
-    tested: "yes"
-    host_ip: " {{hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }} "
-  pre_tasks:
-    - set_fact:
-        global_openldap_rancher_admin_username: "-"
-        global_openldap_root: "-"
-        global_openldap_rancher_admin_password: "-"
-        global_openldap_server_port: "-"
+    # Все что нам надо на входе плейбука
+    # Если какие-то переменные не определены, то будут браться из ролей в defaults
+
+    g_rancher_new_local_admin_password: "secret"
+
+    g_openldap_rancher_admin_username: "root"
+    g_openldap_rancher_admin_password: "wheel"
+
+    g_openldap_other_users_usernames: "user01,user02,user03,user04"
+    g_openldap_other_users_passwords: "pwd01,pwd02,pwd03,pwd04"
+
+    g_openldap_server_port: 1389
+    g_openldap_root: "dc=example,dc=org"
+
+    # openldap_docker_image: "bitnami/openldap:2.4"
+    # rancher_docker_image: "rancher/rancher:latest"
+
   tasks:
-    - name: Show info
-      debug:
-        msg: "Host ip=[{{host_ip}}]"
+    - name: Check os type. Working with RedHat, CentOS, Ubuntu
+      fail:
+        msg: "Host OS is not suitable for this playbook."
+      when: ansible_os_family != 'CentOS' and ansible_os_family != 'RedHat' and ansible_os_family != 'Rocky' and ansible_distribution != 'Ubuntu'
+
+    - name: Start/check docker service
+      service:
+        name: docker
+        state: started
+
+    - name: Install/check Docker Module for Python
+      pip:
+        name: docker
+
     - name: Run OpenLDAP
       include_role:
         name: run_openldap

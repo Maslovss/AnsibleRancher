@@ -8,14 +8,6 @@ rancher_default_username: "admin"
 rancher_default_password: "admin"
 rancher_new_password: "secret"
 
-rancher_new_password_activated: "no"
-
-#    We need variables from openldap role:
-#openldap_rancher_admin_username
-#openldap_rancher_admin_password
-#openldap_root
-#openldap_server_port
-
 #TODO set openldap_server_ip
 
 #will set later

@@ -1,38 +1,42 @@
 ---
-- name: Set global variables from OpenLDAP role
-  set_fact:
-    global_openldap_rancher_admin_username: "{{ openldap_rancher_admin_username }}"
-    global_openldap_root: "{{ openldap_root }}"
-    global_openldap_rancher_admin_password: "{{ openldap_rancher_admin_password }}"
-    global_openldap_server_port: "{{ openldap_server_port }}"
+- include_tasks: set_variables.yml
 
 - name: Start OpenLDAP container
+
   docker_container:
     name: "{{ openldap_container_name }}"
     image: "{{ openldap_docker_image }}"
     state: started
     ports:
-      - "{{ openldap_server_port }}:{{ openldap_container_port }}"
+      - "{{ g_openldap_server_port }}:{{ openldap_container_port }}"
     env:
       LDAP_ADMIN_USERNAME: "{{ openldap_admin_username }}"
       LDAP_ADMIN_PASSWORD: "{{ openldap_admin_password }}"
       LDAP_USERS: "{{ openldap_users_username }}"
       LDAP_PASSWORDS: "{{ openldap_users_password }}"
-      LDAP_ROOT: "{{ openldap_root }}"
+      LDAP_ROOT: "{{ g_openldap_root }}"
       LDAP_PORT_NUMBER: "{{ openldap_container_port }}"
 
 #We need command ldapsearch for testing
 # test ldapsearch -x -b "dc=example,dc=org" -H ldap://IP:1389
-- name: Install openldap-clients for testing
+
+- name: Install openldap-clients for testing yum
   yum:
     name: openldap-clients
     state: latest
+  when: ansible_os_family == 'CentOS' or ansible_os_family == 'RedHat' or ansible_os_family == 'Rocky'
+
+- name: Install openldap-clients for testing apt
+  apt:
+    name: ldap-utils
+    state: latest
+  when: ansible_distribution == 'Ubuntu'
 
 - name: Test 1, making request with ldapsearch...
   vars:
     server_ip: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
-  #TODO добавить кавычки: ldapsearch -x -b "{{ openldap_root }}" -H...........
-  shell: "ldapsearch -x -b {{ openldap_root }} -H ldap://{{ server_ip }}:{{ openldap_server_port }} |  egrep 'member.+{{ openldap_root }}'"
+  #TODO добавить кавычки: ldapsearch -x -b "{{ g_openldap_root }}" -H...........
+  shell: "ldapsearch -x -b {{ g_openldap_root }} -H ldap://{{ server_ip }}:{{ g_openldap_server_port }} |  egrep 'member.+{{ g_openldap_root }}'"
   register: result_ldapsearch_request
   failed_when: result_ldapsearch_request.stdout == ""
 
